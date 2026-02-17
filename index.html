@@ -43,6 +43,7 @@
                     backgroundImage: {
                        'parchment': "url('https://www.transparenttextures.com/patterns/parchment.png')",
                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                       'luxury-gradient': 'linear-gradient(135deg, #0a0f1a 0%, #1a1f2c 100%)',
                     },
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -289,7 +290,7 @@
                 <a href="#about" class="hover:text-gold-500 transition-colors relative group py-2">אודות<span class="absolute bottom-0 right-0 w-0 h-[1px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span></a>
                 <a href="#services" class="hover:text-gold-500 transition-colors relative group py-2">התמחויות<span class="absolute bottom-0 right-0 w-0 h-[1px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span></a>
                 <a href="#arbitration" class="hover:text-gold-500 transition-colors relative group py-2">בוררות<span class="absolute bottom-0 right-0 w-0 h-[1px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span></a>
-                <a href="#videos" class="hover:text-gold-500 transition-colors relative group py-2">מדיה<span class="absolute bottom-0 right-0 w-0 h-[1px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span></a>
+                <a href="#strategy" class="hover:text-gold-500 transition-colors relative group py-2">אסטרטגיה<span class="absolute bottom-0 right-0 w-0 h-[1px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span></a>
                 <a href="#collaborations" class="hover:text-gold-500 transition-colors relative group py-2 text-gold-400">לעורכי דין<span class="absolute bottom-0 right-0 w-0 h-[1px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span></a>
                 <a href="#contact" class="btn-luxury bg-gold-gradient-bg text-navy-950 px-8 py-3 rounded-sm font-bold shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:shadow-[0_0_35px_rgba(197,160,89,0.5)] transform hover:-translate-y-0.5 border border-gold-400">צור קשר</a>
             </div>
@@ -312,7 +313,7 @@
         <a href="#about" class="serif text-2xl text-white hover:text-gold-500 transition-colors mobile-link">אודות המשרד</a>
         <a href="#services" class="serif text-2xl text-white hover:text-gold-500 transition-colors mobile-link">תחומי עיסוק</a>
         <a href="#arbitration" class="serif text-2xl text-white hover:text-gold-500 transition-colors mobile-link">בוררות עסקית</a>
-        <a href="#videos" class="serif text-2xl text-white hover:text-gold-500 transition-colors mobile-link">ספריית וידאו</a>
+        <a href="#strategy" class="serif text-2xl text-white hover:text-gold-500 transition-colors mobile-link">אסטרטגיה</a>
         <a href="#collaborations" class="serif text-2xl text-gold-400 hover:text-gold-200 transition-colors mobile-link">שיתופי פעולה</a>
         <a href="#contact" class="mt-8 serif text-xl text-navy-950 bg-gold-500 px-10 py-4 rounded-sm font-bold shadow-2xl mobile-link">תיאום פגישת יעוץ</a>
     </div>
@@ -459,63 +460,79 @@
         </div>
     </section>
 
-    <!-- NEW: Video Library Section -->
-    <section id="videos" class="py-24 bg-navy-950 relative border-b border-gold-500/10">
+    <!-- NEW SECTION: Strategy & Tactics -->
+    <section id="strategy" class="py-24 bg-navy-900 relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
         <div class="container mx-auto px-6 md:px-12">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-gold-600 font-bold tracking-[0.4em] text-[10px] uppercase">ספריית מדיה</span>
-                <h2 class="serif text-4xl md:text-5xl mt-4 text-white">הרב מדבר</h2>
-                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">סרטוני הסברה קצרים על זכויותיכם בבית הדין, חידושים בפסיקה ותובנות מהשטח.</p>
+                <span class="text-gold-600 font-bold tracking-[0.4em] text-[10px] uppercase">תכנון וניהול תיק</span>
+                <h2 class="serif text-4xl text-white mt-4">אסטרטגיה וטקטיקה בבית הדין</h2>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Video 1 Placeholder -->
-                <div class="group cursor-pointer" data-aos="fade-up">
-                    <div class="video-container mb-4 bg-navy-900 relative">
-                        <div class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center pl-1">
-                                <svg class="w-8 h-8 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Strategy Card 1 -->
+                <div class="group relative perspective-1000 h-96" data-aos="flip-left">
+                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+                        <!-- Front -->
+                        <div class="absolute inset-0 bg-navy-950 border border-gold-500/30 p-8 flex flex-col items-center justify-center text-center backface-hidden shadow-2xl">
+                            <div class="w-16 h-16 rounded-full bg-gold-500/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             </div>
+                            <h3 class="serif text-2xl text-white mb-2">מתקפה יזומה</h3>
+                            <p class="text-slate-400 text-sm">מתי נכון להגיש תביעה ראשונים ולקבוע עובדות בשטח?</p>
+                            <div class="mt-4 text-gold-500 text-xs font-bold uppercase tracking-widest">הפוך לפרטים</div>
                         </div>
-                        <!-- Replace src with actual YouTube embed later -->
-                        <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-navy-950 to-transparent">
-                            <span class="text-white text-xs font-bold bg-gold-600 px-2 py-1 rounded">03:45</span>
+                        <!-- Back -->
+                        <div class="absolute inset-0 bg-gold-600 p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 shadow-2xl">
+                            <h3 class="serif text-2xl text-white mb-4">יתרון הביתיות</h3>
+                            <p class="text-white/90 text-sm leading-relaxed">
+                                הגשת תביעה בבית הדין הרבני לפני הצד השני (מרוץ סמכויות) יכולה להעניק יתרון עצום בנושאי משמורת וחינוך, ולעיתים אף ברכוש. אנו מזהים את הרגע הקריטי לפעולה.
+                            </p>
                         </div>
                     </div>
-                    <h3 class="text-white font-serif text-xl mb-2 group-hover:text-gold-500 transition-colors">איך מתכוננים לדיון ראשון?</h3>
-                    <p class="text-slate-500 text-sm">טיפים מעשיים להופעה מנצחת בבית הדין הרבני.</p>
                 </div>
 
-                <!-- Video 2 Placeholder -->
-                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-container mb-4 bg-navy-900 relative">
-                        <div class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center pl-1">
-                                <svg class="w-8 h-8 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <!-- Strategy Card 2 -->
+                <div class="group relative perspective-1000 h-96" data-aos="flip-left" data-aos-delay="100">
+                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+                        <!-- Front -->
+                        <div class="absolute inset-0 bg-navy-950 border border-gold-500/30 p-8 flex flex-col items-center justify-center text-center backface-hidden shadow-2xl">
+                            <div class="w-16 h-16 rounded-full bg-gold-500/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                             </div>
+                            <h3 class="serif text-2xl text-white mb-2">מגננה והשהייה</h3>
+                            <p class="text-slate-400 text-sm">הכוח שבהמתנה ואיסוף ראיות שקט.</p>
+                            <div class="mt-4 text-gold-500 text-xs font-bold uppercase tracking-widest">הפוך לפרטים</div>
                         </div>
-                        <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-navy-950 to-transparent">
-                            <span class="text-white text-xs font-bold bg-gold-600 px-2 py-1 rounded">05:12</span>
+                        <!-- Back -->
+                        <div class="absolute inset-0 bg-navy-800 border border-gold-500 p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 shadow-2xl">
+                            <h3 class="serif text-2xl text-gold-500 mb-4">חכמת ההמתנה</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                לעיתים, תגובה פזיזה גורמת נזק. בתיקים בהם הצד השני פועל באגרסיביות, אנו בונים תיק ראיות מוצק (הקלטות, מסמכים) וחושפים אותו ברגע המכריע בבית הדין להפתעה מוחלטת.
+                            </p>
                         </div>
                     </div>
-                    <h3 class="text-white font-serif text-xl mb-2 group-hover:text-gold-500 transition-colors">כתובה - האם באמת משלמים?</h3>
-                    <p class="text-slate-500 text-sm">ניפוץ מיתוסים לגבי חיוב הכתובה בגירושין.</p>
                 </div>
 
-                <!-- Video 3 Placeholder -->
-                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-container mb-4 bg-navy-900 relative">
-                        <div class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center pl-1">
-                                <svg class="w-8 h-8 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <!-- Strategy Card 3 -->
+                <div class="group relative perspective-1000 h-96" data-aos="flip-left" data-aos-delay="200">
+                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+                        <!-- Front -->
+                        <div class="absolute inset-0 bg-navy-950 border border-gold-500/30 p-8 flex flex-col items-center justify-center text-center backface-hidden shadow-2xl">
+                            <div class="w-16 h-16 rounded-full bg-gold-500/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
                             </div>
+                            <h3 class="serif text-2xl text-white mb-2">גישור מתוך עוצמה</h3>
+                            <p class="text-slate-400 text-sm">הגעה לפשרה הטובה ביותר במינימום נזק.</p>
+                            <div class="mt-4 text-gold-500 text-xs font-bold uppercase tracking-widest">הפוך לפרטים</div>
                         </div>
-                        <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-navy-950 to-transparent">
-                            <span class="text-white text-xs font-bold bg-gold-600 px-2 py-1 rounded">04:20</span>
+                        <!-- Back -->
+                        <div class="absolute inset-0 bg-gold-600 p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180 shadow-2xl">
+                            <h3 class="serif text-2xl text-white mb-4">שלום עדיף</h3>
+                            <p class="text-white/90 text-sm leading-relaxed">
+                                גם כשפנינו לשלום, אנו מגיעים מוכנים למלחמה. גישה זו מאפשרת לנהל משא ומתן מעמדת כוח ולהשיג הסכם גירושין או פשרה עסקית אופטימלית ומהירה.
+                            </p>
                         </div>
                     </div>
-                    <h3 class="text-white font-serif text-xl mb-2 group-hover:text-gold-500 transition-colors">צוואה הלכתית ב-60 שניות</h3>
-                    <p class="text-slate-500 text-sm">למה צוואה רגילה לא מספיקה לאדם שומר מסורת.</p>
                 </div>
             </div>
         </div>
@@ -1062,6 +1079,29 @@
         </div>
     </section>
 
+    <!-- Video Link Section (Requested) -->
+    <section class="py-16 bg-navy-900 border-t border-gold-500/20">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="serif text-3xl text-white mb-8">הרצאות אורח</h3>
+            <div class="max-w-3xl mx-auto bg-navy-950 p-1 rounded-sm border border-gold-500/30 hover:border-gold-500 transition-colors duration-300 group">
+                <a href="https://youtu.be/sTTKgpCdMkc?si=Mq9GbDHk87kx3OeM" target="_blank" class="block p-8 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gold-500/5 group-hover:bg-gold-500/10 transition-colors"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="text-right">
+                            <span class="text-xs font-bold text-gold-500 uppercase tracking-widest mb-2 block">סרטון מומלץ</span>
+                            <h4 class="serif text-2xl text-white mb-2 group-hover:text-gold-400 transition-colors">פיענוח קורות חיים</h4>
+                            <p class="text-slate-400 text-sm">הרצאה מרתקת בנושא תעסוקה וקריירה</p>
+                        </div>
+                        <div class="flex items-center gap-3 text-white border border-white/20 px-6 py-3 rounded-full group-hover:bg-gold-500 group-hover:text-navy-950 group-hover:border-transparent transition-all">
+                            <span>לצפייה ביוטיוב</span>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact & Map Section -->
     <section id="contact" class="py-24 bg-navy-950 relative">
         <div class="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-0 shadow-2xl rounded-lg overflow-hidden border border-gold-500/20">
@@ -1216,7 +1256,7 @@
             // Navbar blur
             if (window.scrollY > 50) {
                 navbar.classList.add('bg-navy-950/95', 'shadow-2xl', 'py-3');
-                navbar.classList.remove('py-6', 'md:py-6', 'backdrop-blur-[2px]', 'bg-transparent');
+                navbar.classList.remove('py-4', 'md:py-6', 'backdrop-blur-[2px]', 'bg-transparent');
             } else {
                 navbar.classList.remove('bg-navy-950/95', 'shadow-2xl', 'py-3');
                 navbar.classList.add('py-4', 'md:py-6', 'backdrop-blur-[2px]', 'bg-transparent');
