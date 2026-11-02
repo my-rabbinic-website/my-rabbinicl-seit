@@ -776,139 +776,165 @@
 
     <!-- Modals Container for Topic Pages -->
     
-    <!-- Modal 1: איזון משאבים -->
-    <div id="modal-resources" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'modal-resources')">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl border border-gold-500/30">
-            <button onclick="closeModal('modal-resources')" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 transition-colors">
+<!-- Modal 1: איזון משאבים -->
+    <div id="modal-resources" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl shadow-slate-950/20 border border-gold-500/40 transform transition-all">
+            <button onclick="closeModal('modal-resources')" class="absolute top-5 left-5 text-slate-400 hover:text-navy-900 text-lg w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="text-gold-600 text-3xl mb-3"><i class="fa-solid fa-scale-balanced"></i></div>
-            <h3 class="text-2xl font-bold text-navy-900 mb-4">איזון משאבים וחלוקת רכוש בבאר שבע</h3>
-            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
-                <p>תהליך איזון משאבים נועד להסדיר את חלוקת כלל הנכסים שנצברו במהלך החיים המשותפים של בני הזוג, תוך שמירה על הגינות, דיוק ויציבות כלכלית מול בית הדין הרבני בבאר שבע.</p>
-                <h4 class="font-bold text-navy-900 pt-2">מה כולל הטיפול במשרדנו?</h4>
-                <ul class="list-disc list-inside space-y-1 text-slate-600">
-                    <li>מיפוי מלא של הנכסים: נדל"ן, חסכונות, זכויות סוציאליות, פנסיות וקופות גמל.</li>
-                    <li>הערכה והסדרה של חובות ואיזון התחייבויות כספיות.</li>
-                    <li>בחינת מוניטין עסקי וכושר השתכרות במידת הצורך.</li>
-                    <li>ייצוג מקצועי בבית הדין הרבני להשגת חלוקה צודקת התואמת את מכלול נסיבות המקרה.</li>
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-600 text-2xl mb-4 border border-gold-500/20">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-navy-900 mb-4 tracking-tight">איזון משאבים וחלוקת רכוש</h3>
+            <div class="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+                <p>תהליך איזון משאבים מהווה נדבך מרכזי וקריטי בהסדרת המערך הכלכלי והמשפחתי. ההליך נועד להסדיר באופן יסודי ומקיף את חלוקת כלל הנכסים, הזכויות והחובות שנצברו במהלך שנות החיים המשותפות, תוך הקפדה יתרה על ערכי הגינות, דיוק מירבי, שקיפות מלאה ושמירה על יציבות כלכלית ארוכת טווח.</p>
+                <p>העבודה המקצועית נדרשת לרדת לעומקם של פרטים חשבונאיים ומשפטיים מורכבים, על מנת למנוע עיוותי דין או פגיעה בזכויות שנצברו בעמל רב לאורך השנים.</p>
+                <h4 class="font-bold text-navy-900 pt-2 text-base">מה כולל הטיפול המעמיק במשרדנו?</h4>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li>מיפוי מלא, מקיף ויסודי של מלוא הנכסים: נדל"ן, נכסים פיננסיים, חסכונות והשקעות.</li>
+                    <li>בדיקה והערכה מדויקת של זכויות סוציאליות, פנסיות, קרנות השתלמות וקופות גמל עתידיות.</li>
+                    <li>הערכה, חישוב והסדרה של התחייבויות, הלוואות ואיזון חובות משותפים.</li>
+                    <li>בחינה מקצועית של מוניטין עסקי, נכסים לא מוחשיים וכושר השתכרות עתידי במידת הצורך.</li>
+                    <li>ליווי וייצוג משפטי קפדני בערכאות השיפוטיות השונות ובראשן בתי הדין הרבניים, להשגת חלוקה צודקת ומאוזנת.</li>
                 </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                <a href="#contact" onclick="closeModal('modal-resources')" class="bg-gold-600 hover:bg-gold-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-colors">פנייה לייעוץ בנושא</a>
+            <div class="mt-8 pt-5 border-t border-slate-100 flex justify-end">
+                <a href="#contact" onclick="closeModal('modal-resources')" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-gold-600/20 transition-all duration-200">פנייה לייעוץ בנושא</a>
             </div>
         </div>
     </div>
 
     <!-- Modal 2: פירוק שיתוף -->
-    <div id="modal-dissolution" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'modal-dissolution')">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl border border-gold-500/30">
-            <button onclick="closeModal('modal-dissolution')" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 transition-colors">
+    <div id="modal-dissolution" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl shadow-slate-950/20 border border-gold-500/40 transform transition-all">
+            <button onclick="closeModal('modal-dissolution')" class="absolute top-5 left-5 text-slate-400 hover:text-navy-900 text-lg w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="text-gold-600 text-3xl mb-3"><i class="fa-solid fa-house-chimney"></i></div>
-            <h3 class="text-2xl font-bold text-navy-900 mb-4">פירוק שיתוף במקרקעין ובנכסים</h3>
-            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
-                <p>כאשר ישנה בעלות משותפת על דירת מגורים או נכסים נוספים, מטרת ההליך היא לפרק את השותפות באופן היעיל וההוגן ביותר, תוך מניעת הפסדים מיותרים.</p>
-                <h4 class="font-bold text-navy-900 pt-2">דגשים מרכזיים בהליך:</h4>
-                <ul class="list-disc list-inside space-y-1 text-slate-600">
-                    <li>קביעת מנגנון מכירה או רכישת חלקו של השותף (זכות קדימה).</li>
-                    <li>הגנה על זכויות המדור והילדים במידת הצורך.</li>
-                    <li>ניהול משא ומתן להסכמות מהירות למניעת כינוס נכסים יקר.</li>
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-600 text-2xl mb-4 border border-gold-500/20">
+                <i class="fa-solid fa-house-chimney"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-navy-900 mb-4 tracking-tight">פירוק שיתוף במקרקעין ובנכסים</h3>
+            <div class="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+                <p>כאשר קיימת בעלות משותפת על דירת מגורים, נדל"ן עסקי או נכסים משמעותיים אחרים, התנהלות לא מבוקרת עלולה להוביל לשחיקת ערך הנכסים ולהוצאות מיותרות. מטרת ההליך המקצועי היא לפרק את השותפות באופן היעיל, המהיר וההוגן ביותר, תוך מניעת הפסדים כלכליים כבדים ושמירה קפדנית על האינטרסים של כל צד.</p>
+                <p>הניסיון הרב בניהול תיקים מסוג זה מאפשר לנו לנווט בין המורכבויות המשפטיות והרגשיות, ולמצוא פתרונות יצירתיים המונעים הליכים משפטיים ממושכים ומיותרים.</p>
+                <h4 class="font-bold text-navy-900 pt-2 text-base">דגשים מרכזיים בהליך הטיפול:</h4>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li>גיבוש וקביעת מנגנוני מכירה הוגנים או מתן זכות קדימה לרכישת חלקו של השותף בתנאים אופטימליים.</li>
+                    <li>הגנה בלתי מתפשרת על זכויות המדור, הבטחת יציבות למגורי הילדים ומניעת פגיעה בתא המשפחתי.</li>
+                    <li>ניהול משא ומתן מקצועי להסכמות מהירות, המונעות כניסה להליכי הוצאה לפועל או כינוס נכסים יקרים ושוחקים.</li>
+                    <li>תיאום מלא והתנהלות מדויקת מול מומחים מטעם בית המשפט או בית הדין, לרבות שמאי מקרקעין וכונסי נכסים.</li>
                 </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                <a href="#contact" onclick="closeModal('modal-dissolution')" class="bg-gold-600 hover:bg-gold-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-colors">פנייה לייעוץ בנושא</a>
+            <div class="mt-8 pt-5 border-t border-slate-100 flex justify-end">
+                <a href="#contact" onclick="closeModal('modal-dissolution')" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-gold-600/20 transition-all duration-200">פנייה לייעוץ בנושא</a>
             </div>
         </div>
     </div>
 
     <!-- Modal 3: תביעות כתובה -->
-    <div id="modal-ketubah" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'modal-ketubah')">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl border border-gold-500/30">
-            <button onclick="closeModal('modal-ketubah')" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 transition-colors">
+    <div id="modal-ketubah" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl shadow-slate-950/20 border border-gold-500/40 transform transition-all">
+            <button onclick="closeModal('modal-ketubah')" class="absolute top-5 left-5 text-slate-400 hover:text-navy-900 text-lg w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="text-gold-600 text-3xl mb-3"><i class="fa-solid fa-scroll"></i></div>
-            <h3 class="text-2xl font-bold text-navy-900 mb-4">תביעות כתובה ופיצויים</h3>
-            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
-                <p>תביעת כתובה דורשת בקיאות הלכתית עמוקה בעילות הגירושין ובפסיקת בתי הדין הרבניים.</p>
-                <h4 class="font-bold text-navy-900 pt-2">המענה המקצועי במשרדנו:</h4>
-                <ul class="list-disc list-inside space-y-1 text-slate-600">
-                    <li>ניתוח מעמיק של עילות הכתובה בהתאם לשולחן ערוך ולפוסקים.</li>
-                    <li>כתיבת סיכומים הלכתיים מבוססים ומדויקים.</li>
-                    <li>ייצוג קפדני בבית הדין לשמירה מלאה על זכויות הפונה.</li>
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-600 text-2xl mb-4 border border-gold-500/20">
+                <i class="fa-solid fa-scroll"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-navy-900 mb-4 tracking-tight">תביעות כתובה ופיצויים</h3>
+            <div class="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+                <p>שטר הכתובה אינו מהווה רק מסמך מסורתי סמלי, אלא התחייבות משפטית והלכתית בעלת משמעות כספית אדירה. תביעת כתובה דורשת בקיאות הלכתית עמוקה, שליטה בלתי מתפשרת בשולחן ערוך ובפסיקות העדכניות של בתי הדין הרבניים ברחבי הארץ, לצד יכולת ניתוח דקדקנית של נסיבות פירוק הקשר.</p>
+                <p>הטיפול המשפטי בתחום זה מחייב שילוב מדויק בין הבנה עמוקה של דיני המשפחה לבין ידע רחב בפסיקת הדיינים והפוסקים לאורך הדורות.</p>
+                <h4 class="font-bold text-navy-900 pt-2 text-base">המענה המקצועי המקיף במשרדנו:</h4>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li>ניתוח מעמיק ויסודי של עילות הכתובה בהתאם להוראות השולחן ערוך ולדעות הפוסקים הראשונים והאחרונים.</li>
+                    <li>הכנה מדוקדקת וכתיבת סיכומים הלכתיים ומשפטיים מנומקים, מבוססים ומדויקים להפליא.</li>
+                    <li>ייצוג קפדני, אסרטיבי ומכובד בבתי הדין הרבניים לשמירה מלאה על זכויות הפונה ומיצוי מלוא זכויותיו על פי דין תורה.</li>
+                    <li>בחינה מערכתית של מכלול התביעות הנלוות והשלכותיהן על מאזן הזכויות הכולל בתיק.</li>
                 </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                <a href="#contact" onclick="closeModal('modal-ketubah')" class="bg-gold-600 hover:bg-gold-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-colors">פנייה לייעוץ בנושא</a>
+            <div class="mt-8 pt-5 border-t border-slate-100 flex justify-end">
+                <a href="#contact" onclick="closeModal('modal-ketubah')" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-gold-600/20 transition-all duration-200">פנייה לייעוץ בנושא</a>
             </div>
         </div>
     </div>
 
     <!-- Modal 4: מזונות והסדרי שהות -->
-    <div id="modal-custody" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'modal-custody')">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl border border-gold-500/30">
-            <button onclick="closeModal('modal-custody')" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 transition-colors">
+    <div id="modal-custody" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl shadow-slate-950/20 border border-gold-500/40 transform transition-all">
+            <button onclick="closeModal('modal-custody')" class="absolute top-5 left-5 text-slate-400 hover:text-navy-900 text-lg w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="text-gold-600 text-3xl mb-3"><i class="fa-solid fa-child"></i></div>
-            <h3 class="text-2xl font-bold text-navy-900 mb-4">מזונות ילדים והסדרי שהות</h3>
-            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
-                <p>קביעת מזונות ילדים והסדרי שהות מצריכה איזון רגיש בין שמירה על טובת הילדים לבין הבטחת יכולת קיום הוגנת ויציבה לכל הצדדים.</p>
-                <h4 class="font-bold text-navy-900 pt-2">תחומי הטיפול:</h4>
-                <ul class="list-disc list-inside space-y-1 text-slate-600">
-                    <li>חישוב צרכים הכרחיים ומדור מורחב.</li>
-                    <li>גיבוש הסדרי שהות ואחריות הורית משותפת.</li>
-                    <li>טיפול בתביעות לעדכון/שינוי סכומי מזונות בעקבות שינוי נסיבות.</li>
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-600 text-2xl mb-4 border border-gold-500/20">
+                <i class="fa-solid fa-child"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-navy-900 mb-4 tracking-tight">מזונות ילדים והסדרי שהות</h3>
+            <div class="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+                <p>סוגיות הקשורות לרווחת הילדים, קביעת דמי מזונות והסדרי שהות ואחריות הורית מצריכות רגישות עליונה, לצד מקצועיות בלתי מתפשרת. מטרת העל היא לאזן בזהירות הראויה בין שמירה קפדנית ובלתי מתפשרת על טובתם הנפשית והפיזית של הילדים, לבין הבטחת יכולת קיום הוגנת, סבירה ויציבה לכל אחד מההורים בהמשך דרכו.</p>
+                <p>המשרד מלווה את הלקוחות מתוך ראייה לטווח ארוך, במטרה לייצר פתרונות בני-קיימא המונעים חיכוכים מיותרים הנוגעים לעתיד הילדים.</p>
+                <h4 class="font-bold text-navy-900 pt-2 text-base">תחומי הטיפול המרכזיים:</h4>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li>חישוב מדויק ומבוסס של צרכים הכרחיים, צרכים שאינם הכרחיים ועלויות מדור מורחב בהתאם לפסיקה.</li>
+                    <li>גיבוש הסדרי שהות מאוזנים, יציבים המעודדים אחריות הורית משותפת ומיטבית עבור הילדים.</li>
+                    <li>טיפול מקצועי ויסודי בתביעות לעדכון, הפחתה או הגדלת סכומי מזונות בעקבות שינוי מהותי בנסיבות החיים.</li>
+                    <li>ליווי צמוד בהליכים מול יחידות הסיוע, פקידי סעד ומומחים רפואיים ופסיכולוגיים במידת הצורך.</li>
                 </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                <a href="#contact" onclick="closeModal('modal-custody')" class="bg-gold-600 hover:bg-gold-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-colors">פנייה לייעוץ בנושא</a>
+            <div class="mt-8 pt-5 border-t border-slate-100 flex justify-end">
+                <a href="#contact" onclick="closeModal('modal-custody')" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-gold-600/20 transition-all duration-200">פנייה לייעוץ בנושא</a>
             </div>
         </div>
     </div>
 
     <!-- Modal 5: שלום בית -->
-    <div id="modal-peace" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'modal-peace')">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl border border-gold-500/30">
-            <button onclick="closeModal('modal-peace')" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 transition-colors">
+    <div id="modal-peace" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl shadow-slate-950/20 border border-gold-500/40 transform transition-all">
+            <button onclick="closeModal('modal-peace')" class="absolute top-5 left-5 text-slate-400 hover:text-navy-900 text-lg w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="text-gold-600 text-3xl mb-3"><i class="fa-solid fa-hands-holding-child"></i></div>
-            <h3 class="text-2xl font-bold text-navy-900 mb-4">שלום בית והסכמי גירושין</h3>
-            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
-                <p>משרדנו מעמיד בראש סדר העדיפויות את בחינת האפשרות האמיתית להשכנת שלום בית, לצד ניסוח הסכמי גירושין מקיפים במידת הצורך.</p>
-                <h4 class="font-bold text-navy-900 pt-2">אפשרויות הפעולה:</h4>
-                <ul class="list-disc list-inside space-y-1 text-slate-600">
-                    <li>גיבוש הסכם "שלום בית לחלופין גירושין".</li>
-                    <li>ניסוח הסכמים כוללים המונעים התדיינויות ממושכות.</li>
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-600 text-2xl mb-4 border border-gold-500/20">
+                <i class="fa-solid fa-hands-holding-child"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-navy-900 mb-4 tracking-tight">שלום בית והסכמי גירושין</h3>
+            <div class="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+                <p>משרדנו רואה שליחות עליונה ומעמיד בראש סדר העדיפויות המוחלט את בחינת האפשרות האמיתית, הכנה והכדאית להשכנת שלום בית ושיקום התא המשפחתי טרם נקיטת צעדים בלתי הפיכים. עם זאת, במצבים בהם הוכחה בלתי אפשרות להמשיך את חיי הנישואין, אנו מציעים מעטפת מקצועית ורגישה לניסוח הסכמי גירושין הוגנים ומקיפים.</p>
+                <p>הגישה המנחה אותנו היא חתירה מתמדת להסכמות מתוך הבנה כי פתרון בהסכמה חוסך עוגמת נפש רבה, משאבים נפשיים וממון רב.</p>
+                <h4 class="font-bold text-navy-900 pt-2 text-base">אפשרויות הפעולה ושירותי המשרד:</h4>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li>גיבוש וניסוח הסכמי "שלום בית לחלופין גירושין" המותאמים אישית למצבו הייחודי של הזוג.</li>
+                    <li>עריכת הסכמי גירושין כוללים, מפורטים וקפדניים המונעים לחלוטין התדיינויות ממושכות ומתישות בעתיד.</li>
+                    <li>ליווי רגיש ומכובד בתהליכי גישור וגיבוש פתרונות מוסכמים מתוך ראיית טובת המשפחה כולה.</li>
+                    <li>מתן מעטפת ייעוץ כוללת המשלבת ראייה משפטית, אישית והלכתית כאחד.</li>
                 </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                <a href="#contact" onclick="closeModal('modal-peace')" class="bg-gold-600 hover:bg-gold-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-colors">פנייה לייעוץ בנושא</a>
+            <div class="mt-8 pt-5 border-t border-slate-100 flex justify-end">
+                <a href="#contact" onclick="closeModal('modal-peace')" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-gold-600/20 transition-all duration-200">פנייה לייעוץ בנושא</a>
             </div>
         </div>
     </div>
 
     <!-- Modal 6: דיני ממונות -->
-    <div id="modal-monetary" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'modal-monetary')">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-2xl border border-gold-500/30">
-            <button onclick="closeModal('modal-monetary')" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 transition-colors">
+    <div id="modal-monetary" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl shadow-slate-950/20 border border-gold-500/40 transform transition-all">
+            <button onclick="closeModal('modal-monetary')" class="absolute top-5 left-5 text-slate-400 hover:text-navy-900 text-lg w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="text-gold-600 text-3xl mb-3"><i class="fa-solid fa-gavel"></i></div>
-            <h3 class="text-2xl font-bold text-navy-900 mb-4">דיני ממונות וסכסוכים כספיים</h3>
-            <div class="space-y-3 text-slate-700 text-sm leading-relaxed">
-                <p>ייצוג ובירור תביעות כספיות בבתי דין לממונות בהתאם לדין תורה ולחושן משפט.</p>
-                <h4 class="font-bold text-navy-900 pt-2">השירותים כוללים:</h4>
-                <ul class="list-disc list-inside space-y-1 text-slate-600">
-                    <li>ייצוג בסכסוכי שותפים, עסקים וירושות.</li>
-                    <li>כתיבת שטרי בוררות והסכמי פשרה.</li>
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-600 text-2xl mb-4 border border-gold-500/20">
+                <i class="fa-solid fa-gavel"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-navy-900 mb-4 tracking-tight">דיני ממונות וסכסוכים כספיים</h3>
+            <div class="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+                <p>בירור תביעות ממוניות ופתרון סכסוכים עסקיים או בין-אישיים דורשים מומחיות מיוחדת, יושרה ללא פשרות והתנהלות מדויקת על פי דין תורה, חושן משפט וכללי המשפט העברי. משרדנו מעניק שירותי ייצוג ובירור תביעות כספיות מורכבות בבתי דין לממונות ובוררויות תורניות.</p>
+                <p>אנו מלווים את הלקוחות בהקפדה על קלה כחמורה, תוך שמירה על זכויותיהם הממוניות ביושר ובמקצועיות רבה.</p>
+                <h4 class="font-bold text-navy-900 pt-2 text-base">השירותים המקצועיים בתחום זה כוללים:</h4>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li>ייצוג והופעה מקצועית בסכסוכי שותפים, מחלוקות עסקיות מורכבות וחלוקת עיזבונות וירושות.</li>
+                    <li>כתיבה ועריכת שטרי בוררות כדת וכדין, והסכמי פשרה המוסכמים על דעת כל הצדדים.</li>
+                    <li>בדיקת חוזים והתחייבויות ממוניות מראש למניעת מחלוקות עתידיות והבטחת תוקף הלכתי מלא.</li>
+                    <li>ניהול הליכי גישור ובוררות ממון באווירה עניינית ומכובדת.</li>
                 </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                <a href="#contact" onclick="closeModal('modal-monetary')" class="bg-gold-600 hover:bg-gold-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-colors">פנייה לייעוץ בנושא</a>
+            <div class="mt-8 pt-5 border-t border-slate-100 flex justify-end">
+                <a href="#contact" onclick="closeModal('modal-monetary')" class="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-gold-600/20 transition-all duration-200">פנייה לייעוץ בנושא</a>
             </div>
         </div>
     </div>
