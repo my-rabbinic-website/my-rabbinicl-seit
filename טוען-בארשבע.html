@@ -217,197 +217,413 @@
 }
 </script>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS Script -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- AOS CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;700;800;900&display=swap&subset=hebrew">
-
-    <script>
-        if (typeof tailwind !== 'undefined') {
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            gold: {
-                                light: '#FDF8E2',
-                                DEFAULT: '#B8860B',
-                                dark: '#8B6508'
-                            },
-                            brand: {
-                                navy: '#1A2B4C',
-                                textMain: '#1E293B',
-                                textMuted: '#475569',
-                                bgLight: '#F8FAFC'
-                            }
+        
+<script>
+    if (typeof tailwind !== 'undefined') {
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#fef1cb',
+                            DEFAULT: '#D4AF37',
+                            dark: '#997a00',
+                            luxury: '#f1d26f'
                         },
-                        fontFamily: {
-                            assistant: ['Assistant', 'sans-serif'],
-                            heebo: ['Heebo', 'sans-serif'],
+                        dark: {
+                            DEFAULT: '#030303',
+                            light: '#0a0a0a',
+                            accent: '#121212'
+                        }
+                    },
+                    fontFamily: {
+                        assistant: ['Assistant', 'sans-serif'],
+                        heebo: ['Heebo', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 12s infinite alternate cubic-bezier(0.4, 0, 0.2, 1)',
+                        'text-shimmer': 'text-shimmer 3.5s ease-out infinite alternate',
+                        'marquee': 'marquee 35s linear infinite',
+                        'float-particle': 'float-particle 15s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.05)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        },
+                        'text-shimmer': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        },
+                        'float-particle': {
+                            '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '0' },
+                            '10%': { opacity: '0.8' },
+                            '90%': { opacity: '0.8' },
+                            '100%': { transform: 'translateY(-1000px) rotate(360deg)', opacity: '0' }
                         }
                     }
                 }
-            };
-        }
-    </script>
+            }
+        };
+    }
+</script>
 
     <style>
-        body { 
-            font-family: 'Assistant', sans-serif; 
-            background-color: #F8FAFC; 
-            color: #1E293B; 
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, h5, .heebo-font { font-family: 'Heebo', sans-serif; }
+        /* Base Styles */
+        body { font-family: 'Assistant', sans-serif; background-color: #030303; color: #f5f5f5; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        h1, h2, h3, h4, h5, .heebo-font { font-family: 'Heebo', sans-serif; letter-spacing: -0.02em; }
         
+        /* Premium Gold Gradients */
         .gold-gradient { 
-            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #996515 100%); 
+            background: linear-gradient(135deg, #a68726 0%, #D4AF37 25%, #fff0c2 50%, #D4AF37 75%, #856511 100%); 
+            background-size: 200% 200%; 
         }
-        
         .gold-gradient-text { 
-            background: linear-gradient(135deg, #8B6508 0%, #B8860B 50%, #1A2B4C 100%);
+            background: linear-gradient(to right, #D4AF37 0%, #fff0c2 40%, #ffffff 50%, #fff0c2 60%, #D4AF37 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text; 
             background-clip: text;
             -webkit-text-fill-color: transparent; 
+            animation: text-shimmer 4s linear infinite;
+        }
+        
+        /* Glass Panels */
+        .glass { 
+            background: rgba(10, 10, 10, 0.65); 
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.15); 
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-hover:hover { 
+            background: rgba(18, 18, 18, 0.85); 
+            border-color: rgba(212, 175, 55, 0.5); 
+            transform: translateY(-5px) scale(1.01); 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2); 
         }
 
-        .light-card { 
-            background: #FFFFFF; 
-            border: 1px solid #E2E8F0; 
-            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
-            transition: all 0.3s ease;
+        /* Hover Glow Effects */
+        .glow-effect-card { position: relative; overflow: hidden; border-radius: inherit; }
+        .glow-effect-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 55, 0.12), transparent 40%);
+            z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.6s ease;
         }
-        .light-card:hover { 
-            border-color: #B8860B; 
-            transform: translateY(-3px); 
-            box-shadow: 0 10px 25px -5px rgba(184, 134, 11, 0.12); 
+        .glow-effect-card:hover::before { opacity: 1; }
+        .glow-effect-card > * { position: relative; z-index: 1; }
+
+        /* Premium Golden Border Beam */
+        .border-beam { position: relative; }
+        .border-beam::after {
+            content: ''; position: absolute; inset: -1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+            border-radius: inherit; z-index: -1; opacity: 0; transition: opacity 0.5s ease;
+        }
+        .border-beam:hover::after { opacity: 1; }
+        
+        /* Image Glow Animations */
+        .image-glow { position: relative; z-index: 1; }
+        .image-glow::before {
+            content: ''; position: absolute; inset: -8%;
+            background: radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%);
+            z-index: -1; border-radius: 50%; animation: pulse-glow 4s infinite alternate ease-in-out;
+        }
+        @keyframes pulse-glow { 0% { opacity: 0.4; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); } }
+
+        /* Geometric Grid Pattern Overlay */
+        .bg-mesh {
+            background-color: #030303;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.04), transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.04), transparent 45%);
+            background-attachment: fixed;
         }
 
-        #preloader { transition: opacity 0.4s ease; }
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        @media (min-width: 768px) { ::-webkit-scrollbar { width: 8px; } }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #856511, #D4AF37, #ffe8a1, #D4AF37, #856511); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #a68726, #f1d26f, #ffffff, #f1d26f, #a68726); }
+
+        /* Timeline Fixes */
+        .timeline-line::before {
+            content: ''; position: absolute; top: 0; bottom: 0; right: 28px; width: 2px;
+            background: linear-gradient(to bottom, transparent, #D4AF37 15%, #D4AF37 85%, transparent);
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before { right: 20px; }
+            .timeline-item-icon { right: -42px !important; }
+            h1 { font-size: clamp(2.5rem, 8vw, 3.5rem) !important; word-break: keep-all; }
+        }
+
+        /* Form Inputs */
+        input, textarea, select { font-size: 16px !important; outline: none; }
+        .input-glow { transition: all 0.3s ease; }
+        .input-glow:focus { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); border-color: #D4AF37; background-color: rgba(21, 21, 21, 0.9); }
+
+        /* General UX & Preloader */
+        html { scroll-behavior: smooth; }
+        #preloader { transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .loaded #preloader { opacity: 0; pointer-events: none; display: none; }
-
-        details > summary { list-style: none; cursor: pointer; }
+        
+        details > summary { list-style: none; outline: none; cursor: pointer; }
         details > summary::-webkit-details-marker { display: none; }
+        details > summary:focus-visible { box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.8); border-radius: 0.5rem; }
+        details[open] summary ~ * { animation: sweep 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes sweep { 0% {opacity: 0; transform: translateY(-15px)} 100% {opacity: 1; transform: translateY(0)} }
+
+        /* Particles - Desktop only */
+        @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+            .particles-container { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+            .particle { position: absolute; bottom: -10px; width: 3px; height: 3px; background-color: rgba(212, 175, 55, 0.5); border-radius: 50%; box-shadow: 0 0 15px rgba(212, 175, 55, 0.9); animation: float-particle 15s infinite linear; }
+        }
+        
+        /* Luxury Texture Overlay */
+        .luxury-texture {
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0; mix-blend-mode: overlay;
+        }
+
+        /* Shimmer Overlay for Buttons */
+        .shimmer-btn { position: relative; overflow: hidden; z-index: 1; }
+        .shimmer-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 40%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transform: skewX(-25deg); transition: all 0.75s ease; z-index: -1;
+        }
+        .shimmer-btn:hover::before { left: 125%; transition: all 0.75s ease; }
+
+        /* Elegant Double Gold Frame */
+        .double-gold-frame {
+            position: relative;
+            border: 1px solid #D4AF37;
+            padding: 8px;
+            background-color: rgba(5, 5, 5, 0.8);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .double-gold-frame::before {
+            content: ''; position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px dashed rgba(212, 175, 55, 0.5);
+            pointer-events: none;
+        }
+        
+        /* Scroll Progress Head Glow */
+        #scroll-progress-bar { position: relative; }
+        #scroll-progress-bar::after {
+            content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            width: 10px; height: 10px; background: #ffffff; border-radius: 50%;
+            box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.8); opacity: 0.9;
+        }
     </style>
 </head>
+<body class="bg-mesh relative overflow-x-hidden pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
 
-<body class="relative">
-
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center">
-        <div class="w-12 h-12 border-4 border-gold/30 border-t-gold rounded-full animate-spin mb-3"></div>
-        <div class="text-brand-navy font-bold text-base heebo-font">הרב אלדר לוי</div>
+    <!-- Scroll Progress Bar - שודרג עם הילה ונקודת תאורה -->
+    <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1.5 bg-dark/80 backdrop-blur-sm z-[100]" aria-hidden="true">
+        <div id="scroll-progress-bar" class="h-full gold-gradient w-0 rounded-r-full transition-all duration-150 ease-out shadow-[0_0_15px_rgba(212,175,55,1)]"></div>
     </div>
 
-    <!-- Header -->
-    <header id="header" class="fixed w-full z-50 py-3 px-4 md:px-8 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/" class="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-gold rounded-lg p-1" aria-label="לדף הבית - הרב אלדר לוי">
-                <div class="w-10 h-10 md:w-11 md:h-11 gold-gradient rounded-xl flex items-center justify-center text-white font-black text-base md:text-lg shadow-sm heebo-font">
-                    E.L
+<!-- Preloader - משודרג -------------->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-dark flex flex-col items-center justify-center transition-opacity duration-700">
+        <!-- הלוגו - תואם לעיצוב החדש בהדר -->
+        <div class="relative w-20 h-20 md:w-24 md:h-24 gold-gradient rounded-2xl flex items-center justify-center transform rotate-45 shadow-[0_0_40px_rgba(212,175,55,0.4)] animate-pulse mb-10 border-2 border-white/20">
+            <div class="absolute inset-1.5 border border-white/30 rounded-xl"></div>
+            <span class="text-dark text-3xl md:text-4xl font-black transform -rotate-45 heebo-font" aria-hidden="true">E.L</span>
+        </div>
+        
+        <!-- טקסט טעינה ומיתוג -->
+        <div class="flex flex-col items-center gap-3">
+            <div class="text-gold text-lg md:text-xl tracking-[0.15em] font-black heebo-font text-center px-4">
+                הרב אלדר לוי
+            </div>
+            <div class="text-white/80 text-sm md:text-base tracking-widest font-bold animate-pulse text-center px-4">
+                צדק צדק תרדוף...
+            </div>
+        </div>
+    </div>
+    
+    <!-- Animated Background Blobs - משודרג -------->
+    <div class="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0" aria-hidden="true">
+        <!-- בלוב שמאלי עליון -->
+        <div class="absolute top-0 -left-1/4 w-72 md:w-[30rem] h-72 md:h-[30rem] bg-gold/15 rounded-full mix-blend-screen filter blur-[100px] md:blur-[140px] animate-blob"></div>
+        
+        <!-- בלוב ימני אמצעי -->
+        <div class="absolute top-1/2 -right-1/4 w-72 md:w-[30rem] h-72 md:h-[30rem] bg-gold/10 rounded-full mix-blend-screen filter blur-[100px] md:blur-[140px] animate-blob" style="animation-delay: 2s;"></div>
+        
+        <!-- בלוב תחתון מרכזי (חדש - לאיזון) -->
+        <div class="absolute -bottom-32 left-1/2 -translate-x-1/2 w-72 md:w-[25rem] h-72 md:h-[25rem] bg-gold/10 rounded-full mix-blend-screen filter blur-[100px] md:blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+    
+    <!-- Luxury Texture -->
+    <div class="luxury-texture fixed inset-0 w-full h-full pointer-events-none opacity-40 mix-blend-overlay z-0"></div>
+       
+    <!-- headere -->
+   <header id="header" class="fixed w-full z-50 transition-all duration-300 py-3 md:py-4 px-4 md:px-8 bg-dark/90 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20">
+        <div class="container mx-auto flex justify-between items-center relative z-20">
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/" class="flex items-center gap-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg pr-1" aria-label="לדף הבית">
+                <div class="relative w-12 h-12 md:w-14 md:h-14 gold-gradient rounded-xl flex items-center justify-center transform rotate-45 group-hover:rotate-90 transition-all duration-700 shadow-[0_0_15px_rgba(212,175,55,0.3)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] border-2 border-white/20 hover:border-white/40">
+                    <div class="absolute inset-1 border border-white/30 rounded-lg"></div>
+                    <span class="text-dark text-xl md:text-2xl font-black transform -rotate-45 group-hover:-rotate-90 transition-all duration-700 heebo-font" aria-hidden="true">E.L</span>
                 </div>
-                <div class="flex flex-col">
-                    <span class="text-base md:text-xl font-black text-brand-navy leading-none heebo-font">הרב אלדר לוי</span>
-                    <span class="text-[10px] md:text-xs text-brand-textMuted font-semibold mt-0.5">טוען רבני ודיין מוסמך</span>
+                <div class="flex flex-col transform group-hover:-translate-x-1 transition-transform duration-300">
+                    <span class="text-xl md:text-2xl font-black gold-gradient-text tracking-tight leading-none heebo-font">הרב אלדר לוי</span>
+                    <span class="text-[9px] md:text-[11px] text-white/80 tracking-[0.2em] font-bold mt-1 uppercase">טוען רבני ודיין מוסמך</span>
                 </div>
             </a>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-7" aria-label="תפריט ניווט ראשי">
-                <a href="#about" class="text-sm font-bold text-brand-textMain hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded px-1 py-0.5">אודות</a>
-                <a href="#services" class="text-sm font-bold text-brand-textMain hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded px-1 py-0.5">תחומי עיסוק</a>
-                <a href="#articles" class="text-sm font-bold text-brand-textMain hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded px-1 py-0.5">מאמרים ופסיקה</a>
-                <a href="#arbitration" class="text-sm font-bold text-brand-textMain hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded px-1 py-0.5">גישור ובוררות</a>
-                <a href="#faq" class="text-sm font-bold text-brand-textMain hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded px-1 py-0.5">שאלות נפוצות</a>
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="תפריט ניווט ראשי">
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיסוק" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    אודות
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#services" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    תחומי עיסוק
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ספרותתורנית" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    מאמרים ופסיקה
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בוררות" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    גישור ובוררות
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#strategy" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    המלצות
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#faq" class="text-sm font-bold text-white/80 hover:text-gold transition-colors relative group focus-visible:outline-none focus-visible:text-gold rounded py-1">
+                    שאלות נפוצות
+                    <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <a href="tel:0534192798" class="hidden sm:flex items-center gap-2 text-brand-navy hover:text-gold transition-colors text-xs md:text-sm font-bold dir-ltr bg-slate-100 px-3.5 py-2 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-gold" aria-label="חיוג למשרד">
-                    053-4192798 <i class="fas fa-phone-alt text-[10px]" aria-hidden="true"></i>
+            <div class="flex items-center gap-3 md:gap-5">
+                <a href="tel:0534192798" class="hidden sm:flex items-center gap-2 text-gold hover:text-white transition-all duration-300 text-sm font-bold dir-ltr bg-white/5 hover:bg-gold/10 px-5 py-2.5 rounded-full border border-gold/20 hover:border-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+                    053-4192798 <i class="fas fa-phone-alt text-xs" aria-hidden="true"></i>
                 </a>
-                <a href="#contact" class="hidden md:flex gold-gradient px-5 py-2 rounded-full text-white font-bold text-xs md:text-sm shadow-sm hover:opacity-95 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-navy">
+                <a href="#contact" class="shimmer-btn hidden md:flex gold-gradient px-7 py-2.5 rounded-full text-dark font-black text-sm shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white group-hover-effect">
                     לפנייה ישירה
                 </a>
                 
-                <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-lg border border-slate-300 flex items-center justify-center text-brand-navy hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-gold" aria-label="פתח תפריט ניווט" aria-expanded="false">
-                    <i class="fas fa-bars text-base" aria-hidden="true"></i>
+                <button id="mobileMenuBtn" class="lg:hidden w-12 h-12 glass rounded-full flex items-center justify-center text-gold border border-gold/40 hover:bg-gold/10 hover:scale-105 transition-all duration-300 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold" aria-label="פתח תפריט ניווט">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-white z-[40] translate-x-full transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-5 lg:hidden" aria-hidden="true">
-        <nav class="flex flex-col items-center gap-5 text-center w-full px-6" aria-label="תפריט ניווט נייד">
-            <a href="#about" class="mobile-link text-lg font-bold text-brand-textMain hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold rounded px-3 py-1">אודות</a>
-            <a href="#services" class="mobile-link text-lg font-bold text-brand-textMain hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold rounded px-3 py-1">תחומי עיסוק</a>
-            <a href="#articles" class="mobile-link text-lg font-bold text-brand-textMain hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold rounded px-3 py-1">מאמרים ופסיקה</a>        
-            <a href="#arbitration" class="mobile-link text-lg font-bold text-brand-textMain hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold rounded px-3 py-1">גישור ובוררות</a>
-            <a href="#faq" class="mobile-link text-lg font-bold text-brand-textMain hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold rounded px-3 py-1">שאלות נפוצות</a>
-        </nav>
-        <div class="w-12 h-px bg-slate-200 my-1" aria-hidden="true"></div>
-        <a href="#contact" class="mobile-link gold-gradient px-7 py-2.5 rounded-full text-white font-bold text-base shadow-sm w-2/3 max-w-xs text-center focus:outline-none focus:ring-2 focus:ring-brand-navy">
+    <div id="mobileMenu" class="fixed inset-0 bg-dark/98 backdrop-blur-3xl z-[40] translate-x-full transition-transform duration-500 ease-in-out flex flex-col items-center justify-center gap-6 md:gap-8 lg:hidden" aria-hidden="true">
+        <nav class="flex flex-col items-center gap-5 text-center w-full px-6 overflow-y-auto max-h-[70vh]">
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיסוק" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">אודות</a>
+            <a href="#services" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">תחומי עיסוק</a>
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/ספרותתורנית" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">מאמרים ופסיקה</a>        
+            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בוררות" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">גישור ובוררות</a>
+            <a href="#strategy" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">המלצות</a>
+            <a href="#faq" class="mobile-link text-2xl font-black text-white hover:text-gold transition-all duration-300 block w-full py-2 hover:scale-105">שאלות נפוצות</a>
+        <div class="w-24 h-px bg-gold/40 my-2" aria-hidden="true"></div>
+        <a href="#contact" class="mobile-link gold-gradient px-10 py-4 rounded-full text-dark font-black text-lg shadow-[0_0_20px_rgba(212,175,55,0.3)] w-[85%] max-w-xs text-center hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:scale-105 transition-all duration-300">
             קבע פגישת ייעוץ
         </a>
     </div>
 
-    <main class="relative z-10 pt-16">
+    <main class="relative z-10">
 
-        <!-- Hero Section -->
-        <section class="relative min-h-[80vh] flex items-center py-12 bg-gradient-to-b from-slate-50 to-slate-100 border-b border-slate-200">
-            <div class="container mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                <div class="lg:col-span-7 text-center lg:text-right" data-aos="fade-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold-dark text-xs font-bold mb-4">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i> מומחיות מקיפה במקרים סבוכים
+        <!-- Hero Sectionמעלזהשודרג -->    
+        <section class="relative min-h-[100svh] md:min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
+            <!-- Particles Background -->
+            <div class="particles-container absolute inset-0 hidden md:block" id="particles" aria-hidden="true"></div>
+            
+            <div class="absolute inset-0 bg-[url('https://plus.unsplash.com/premium_photo-1698084059560-9a53de7b816b?q=80&w=811&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center opacity-10 animate-ken-burns"></div>
+            <div class="absolute inset-0 z-0 bg-gradient-to-b md:bg-gradient-to-r from-dark via-dark/90 to-transparent" aria-hidden="true"></div>
+            
+            <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-10 md:gap-12 items-center">
+                <div class="lg:col-span-7 z-20 text-center lg:text-right pt-6 lg:pt-0" data-aos="fade-left" data-aos-delay="300">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-gold/50 text-gold text-[10px] md:text-xs font-bold mb-6 mx-auto lg:mx-0 shadow-lg shadow-gold/10 animate-pulse-slow">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse shadow-[0_0_8px_#D4AF37]" aria-hidden="true"></span>
+                        מומחיות מוכחת במקרים מורכבים ודחופים
                     </div>
                     
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 leading-tight text-brand-navy heebo-font">
-                        עוצמה תורנית<br>
-                        <span class="gold-gradient-text">והכרעה שיפוטית</span>
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-[1.15] md:leading-[1.1] heebo-font drop-shadow-2xl">
+                        <span class="hero-title-gradient block mb-1">עוצמה תורנית</span>
+                        <span class="gold-gradient-text block">הכרעה שיפוטית</span>
                     </h1>
                     
-                    <p class="text-sm sm:text-base text-brand-textMuted font-normal mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                        בהליכי דיני משפחה, ירושות ודיני ממונות, הבקיאות העמוקה בהלכה ובפסיקת בתי הדין הרבניים היא המפתח להשגת התוצאה המיטבית. כטוען רבני המוסמך לדיינות, אני מציע ליווי אסטרטגי, מקצועי ודיסקרטי.
+                    <div class="text-base sm:text-lg md:text-2xl text-white/95 font-bold mb-6 h-8 heebo-font tracking-wide" aria-live="polite">
+                        מומחה ב: <span id="typed-text" class="text-gold font-black"></span><span class="animate-pulse text-gold ml-1" aria-hidden="true">|</span>
+                    </div>
+
+                    <p class="text-sm md:text-base lg:text-xl text-white/80 font-normal mb-8 md:mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 md:px-0">
+                        בהליכים בדיני משפחה, ירושה ובירורי יוחסין, הידע ההלכתי הוא הנשק החזק ביותר להגיע לצדק שלך. 
+                         כטוען רבני המוסמך לדיינות, אני מעניק לך יתרון עצום ביותר, אסטרטגי ומכריע, בעז"ה.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-3 mb-6 justify-center lg:justify-start">
-                        <a href="#contact" class="gold-gradient px-6 py-3 rounded-xl text-white font-bold text-sm shadow-sm hover:opacity-95 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-navy">
-                            <i class="fas fa-gavel text-xs" aria-hidden="true"></i>
-                            תיאום פגישת הערכה ראשונית
+                    <div class="flex flex-col sm:flex-row gap-4 md:gap-5 mb-8 justify-center lg:justify-start">
+                        <a href="#contact" class="shimmer-btn gold-gradient px-6 md:px-8 py-4 md:py-5 rounded-xl text-dark font-black text-base md:text-lg group-hover-effect shadow-[0_10px_30px_rgba(212,175,55,0.45)] flex items-center justify-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                            <i class="fas fa-gavel group-hover:rotate-[-15deg] transition-transform" aria-hidden="true"></i>
+                            פגישת הערכת סיכויים בתיק
                         </a>
-                        <a href="tel:0534192798" class="bg-white border border-slate-300 text-brand-navy hover:bg-slate-50 px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gold">
-                            <i class="fas fa-phone-alt text-gold text-xs" aria-hidden="true"></i>
-                            ייעוץ ישיר: 053-4192798
+                        <a href="tel:0534192798" target="_blank" rel="noopener noreferrer" class="glass px-6 md:px-8 py-4 md:py-5 rounded-xl text-white font-bold text-base md:text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-3 border-white/20 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+                            <i class="fab fa-whatsapp text-green-400 text-xl md:text-2xl group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+                            התייעצות מיידית 
                         </a>
                     </div>
                     
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs text-brand-textMuted font-semibold">
-                        <span class="flex items-center gap-1"><i class="fas fa-lock text-gold" aria-hidden="true"></i> דיסקרטיות וחיסיון מלא</span>
-                        <span class="hidden sm:block text-slate-300">•</span>
-                        <span class="flex items-center gap-1"><i class="fas fa-check-circle text-gold" aria-hidden="true"></i> ניתוח אסטרטגי מקיף</span>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 text-xs md:text-sm text-white/70 font-medium pb-4 lg:pb-0">
+                        <span class="flex items-center gap-1.5"><i class="fas fa-lock text-gold/80" aria-hidden="true"></i> 100% דיסקרטיות וחיסיון מלא</span>
+                        <span class="hidden sm:block w-1.5 h-1.5 rounded-full bg-gold/40" aria-hidden="true"></span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-shield-alt text-gold/80" aria-hidden="true"></i> סיוע ללא התחייבות ראשונית</span>
                     </div>
                 </div>
 
-                <!-- Card/Portrait Area -->
-                <div class="lg:col-span-5 relative max-w-sm mx-auto w-full" data-aos="zoom-in">
-                    <div class="relative w-full p-2 bg-white rounded-2xl shadow-md border border-slate-200">
-                        <div class="relative rounded-xl overflow-hidden aspect-[3/4] bg-slate-100">
-                            <img src="https://lh3.googleusercontent.com/ogw/AF2bZyj-nGb2sRJXAK77WnFzk22AD7vPWympYVMIgWfNZuTZy4c=s1024-c-mo" alt="הרב אלダー לוי - טוען רבני ודיין מוסמך" class="w-full h-full object-cover object-top" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/400x533/FFFFFF/1A2B4C?text=%D7%94%D7%A8%D7%91+%D7%90%D7%9C%D7%93%D7%A8+%D7%9C%D7%95%D7%99'">
+                <!-- Right Side: Clean Portrait Container with Classicתמונת פרופיללל  Double Gold Frame -->
+                <div class="lg:col-span-5 relative mt-6 lg:mt-0 max-w-[260px] sm:max-w-[320px] md:max-w-md mx-auto" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="relative w-full image-glow p-2">
+                        <div class="double-gold-frame rounded-2xl overflow-hidden">
+                            <div class="relative rounded-xl overflow-hidden aspect-[3/4] bg-dark-light transform lg:rotate-1 group-hover-effect transition-transform duration-500 glow-effect-card">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-gold/15 to-transparent mix-blend-overlay z-10 pointer-events-none" aria-hidden="true"></div>
+                                <img src="https://lh3.googleusercontent.com/ogw/AF2bZyj-nGb2sRJXAK77WnFzk22AD7vPWympYVMIgWfNZuTZy4c=s1024-c-mo" alt="הרב אלדר לוי - טוען רבני ודיין מוסמך" class="w-full h-full object-cover object-top opacity-95 filter contrast-[1.1] brightness-[1.05] relative z-10" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/400x533/111111/D4AF37?text=%D7%94%D7%A8%D7%91+%D7%90%D7%9C%D7%93%D7%A8+%D7%9C%D7%95%D7%99'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent z-10" aria-hidden="true"></div>
+                            </div>
                         </div>
 
-                        <div class="absolute -bottom-3 -right-3 bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-2.5 z-20">
-                            <div class="w-9 h-9 rounded-full gold-gradient flex items-center justify-center text-white text-sm font-bold shadow-sm">
-                                <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                        <!-- Badge left bottom -->
+                        <div class="absolute -bottom-5 -right-3 md:-bottom-6 md:-right-8 glass p-3 md:p-4 rounded-2xl border-gold/50 shadow-2xl flex items-center gap-3 md:gap-4 bg-dark/95 backdrop-blur-xl z-20" aria-hidden="true">
+                            <div class="w-10 h-10 md:w-14 md:h-14 rounded-full gold-gradient flex items-center justify-center text-dark text-lg md:text-2xl shadow-inner border border-gold/50">
+                                <i class="fas fa-balance-scale"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-brand-navy text-xs leading-tight heebo-font">טוען רבני ודיין מוסמך</div>
-                                <div class="text-[10px] text-brand-textMuted">רישיון מס' 2123</div>
+                                <div class="font-black text-white text-xs md:text-base leading-none mb-1 heebo-font drop-shadow-md">טוען רבני ודיין מוסמך</div>
+                                <div class="text-[9px] md:text-xs text-gold font-bold tracking-wider uppercase">הסמכת "ידין-ידין"</div>
+                            </div>
+                        </div>
+
+                        <!-- Rating Badge -->
+                        <div class="absolute top-8 -left-4 md:top-10 md:-left-10 glass px-3 md:px-5 py-2 md:py-4 rounded-2xl border-gold/40 shadow-2xl flex items-center gap-2 md:gap-3 bg-dark/95 backdrop-blur-xl z-20" aria-hidden="true">
+                            <div class="text-center">
+                                <div class="font-black text-white text-lg md:text-2xl leading-none heebo-font drop-shadow-md">5.0</div>
+                                <div class="flex text-gold text-[8px] md:text-[10px] mt-1 gap-0.5">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="w-px h-6 md:h-10 bg-white/20"></div>
+                            <div class="flex flex-col items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-4 h-4 md:w-5 md:h-5 mb-1 filter drop-shadow-sm"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+                                <span class="text-[7px] md:text-[8px] text-white/60 font-bold text-center leading-none tracking-wide">ביקורות<br>גוגל</span>
                             </div>
                         </div>
                     </div>
@@ -415,304 +631,892 @@
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section class="py-10 bg-white border-b border-slate-200" aria-label="נתוני המשרד">
-            <div class="container mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div data-aos="fade-up" class="p-2">
-                    <div class="text-2xl sm:text-3xl font-black text-brand-navy mb-0.5 heebo-font"><span class="counter" data-target="100">0</span>%</div>
-                    <div class="text-xs text-brand-textMuted font-bold">חיסיון ודיסקרטיות מלאה</div>
+        <!-- Stats Section ------->
+        <section class="py-10 md:py-14 border-y border-gold/10 bg-dark-light/80 relative z-20 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.7)]" aria-label="נתוני המשרד">
+            <div class="container mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 text-center divide-x divide-x-reverse divide-gold/10">
+                <div data-aos="fade-up" class="group p-2">
+                    <div class="text-3xl md:text-5xl font-black gold-gradient-text mb-1 md:mb-2 transform group-hover:scale-110 transition-transform heebo-font"><span class="counter" data-target="100">0</span>%</div>
+                    <div class="text-[10px] md:text-sm text-white/80 font-bold uppercase tracking-widest leading-tight">חיסיון ודיסקרטיות</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="100" class="p-2">
-                    <div class="text-2xl sm:text-3xl font-black text-gold mb-0.5"><i class="fas fa-gavel" aria-hidden="true"></i></div>
-                    <div class="text-xs text-brand-textMuted font-bold">כושר לדיינות מוסמך</div>
+                <div data-aos="fade-up" data-aos-delay="100" class="group p-2">
+                    <div class="text-3xl md:text-5xl font-black gold-gradient-text mb-1 md:mb-2 transform group-hover:scale-110 transition-transform"><i class="fas fa-gavel drop-shadow-md" aria-hidden="true"></i></div>
+                    <div class="text-[10px] md:text-sm text-white/80 font-bold uppercase tracking-widest leading-tight">הסמכה לדיינות</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="p-2">
-                    <div class="text-2xl sm:text-3xl font-black text-brand-navy mb-0.5 heebo-font"><span class="counter" data-target="24">0</span>/6</div>
-                    <div class="text-xs text-brand-textMuted font-bold">זמינות למקרים דחופים</div>
+                <div data-aos="fade-up" data-aos-delay="200" class="group p-2">
+                    <div class="text-3xl md:text-5xl font-black gold-gradient-text mb-1 md:mb-2 transform group-hover:scale-110 transition-transform heebo-font"><span class="counter" data-target="24">0</span>/6</div>
+                    <div class="text-[10px] md:text-sm text-white/80 font-bold uppercase tracking-widest leading-tight">מענה למקרי חירום</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="300" class="p-2">
-                    <div class="text-2xl sm:text-3xl font-black text-gold mb-0.5 heebo-font">∞</div>
-                    <div class="text-xs text-brand-textMuted font-bold">מחויבות ונחישות מקצועית</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-16 bg-slate-50 border-b border-slate-200">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                    <div class="lg:col-span-6" data-aos="fade-left">
-                        <span class="text-gold font-bold uppercase text-xs tracking-wider mb-1 block">אודות המשרד</span>
-                        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mb-4 heebo-font">ניסיון, עומק תורני<br><span class="gold-gradient-text">וראייה אסטרטגית</span></h2>
-                        <p class="text-brand-textMuted text-sm sm:text-base leading-relaxed mb-4">
-                            משרדנו בראשות הרב אלדר לוי, טוען רבני בעל רישיון מוכר (מס' 2123) ובעל הסמכה לדיינות, מעניק מעטפת משפטית-הלכתית מקיפה בכל תחומי דיני המשפחה, הירושה והממונות.
-                        </p>
-                        <p class="text-brand-textMuted text-sm leading-relaxed mb-6">
-                            הידע המעמיק במקורות ההלכה לצד הכרת נהלי העבודה והפסיקה בבתי הדין הרבניים, מאפשרים לנו לגבש עבור כל לקוח תוכנית פעולה מדויקת, המגנה על זכויותיו ומקדמת את מטרותיו ביעילות וברגישות.
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div class="light-card p-3.5 rounded-xl">
-                                <i class="fas fa-user-shield text-gold text-xl mb-1.5" aria-hidden="true"></i>
-                                <h3 class="font-bold text-brand-navy text-sm">ליווי אישי הדוק</h3>
-                                <p class="text-brand-textMuted text-xs mt-0.5">זמינות גבוהה ויחס אנושי לכל אורך ההליך</p>
-                            </div>
-                            <div class="light-card p-3.5 rounded-xl">
-                                <i class="fas fa-chess text-gold text-xl mb-1.5" aria-hidden="true"></i>
-                                <h3 class="font-bold text-brand-navy text-sm">תכנון אסטרטגי</h3>
-                                <p class="text-brand-textMuted text-xs mt-0.5">בניית קו הגנה/תביעה מחושב מראש</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-6" data-aos="fade-right">
-                        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
-                            <h3 class="text-lg font-bold text-brand-navy mb-4 heebo-font border-b border-slate-100 pb-3">תחומי ההתמחות המרכזיים</h3>
-                            <ul class="space-y-3 text-brand-textMuted text-xs sm:text-sm">
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fas fa-check text-gold mt-0.5 text-xs" aria-hidden="true"></i>
-                                    <span><strong>הליכי גירושין מורכבים:</strong> ניהול תיקים הכוללים רכוש, משמורת ומזונות.</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fas fa-check text-gold mt-0.5 text-xs" aria-hidden="true"></i>
-                                    <span><strong>תביעות כתובה:</strong> ניתוח עילות הלכתיות ומענה מדויק בבית הדין.</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fas fa-check text-gold mt-0.5 text-xs" aria-hidden="true"></i>
-                                    <span><strong>בוררות ודיני ממונות:</strong> פתרון סכסוכים עסקיים ושותפויות ע"פ דין תורה.</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fas fa-check text-gold mt-0.5 text-xs" aria-hidden="true"></i>
-                                    <span><strong>צוואות וירושות:</strong> עריכת צוואות כהלכה וניהול סכסוכי ירושה.</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fas fa-check text-gold mt-0.5 text-xs" aria-hidden="true"></i>
-                                    <span><strong>ערעורים לבית הדין הגדול:</strong> ייצוג מיומן בערכאות ערעור.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div data-aos="fade-up" data-aos-delay="300" class="group p-2">
+                    <div class="text-3xl md:text-5xl font-black gold-gradient-text mb-1 md:mb-2 transform group-hover:scale-110 transition-transform heebo-font drop-shadow-md">∞</div>
+                    <div class="text-[10px] md:text-sm text-white/80 font-bold uppercase tracking-widest leading-tight">נחישות לצדק הלכתי</div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-16 bg-white">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <span class="text-gold font-bold uppercase text-xs tracking-wider mb-1 block">שירותים מקצועיים</span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mb-3 heebo-font">תחומי העיסוק <span class="gold-gradient-text">בבתי הדין הרבניים</span></h2>
-                    <p class="max-w-xl mx-auto text-brand-textMuted text-xs sm:text-sm">ייצוג מקצועי הדורש בקיאות מקיפה בדיני ישראל, יחד עם חשיבה משפטית טקטית לניהול הליכים מורכבים.</p>
+        <!-- Trust Marquee -->
+        <div class="w-full bg-dark border-b border-gold/10 py-3 md:py-4 overflow-hidden relative" aria-hidden="true">
+            <div class="absolute inset-y-0 left-0 w-12 md:w-20 bg-gradient-to-r from-dark to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-12 md:w-20 bg-gradient-to-l from-dark to-transparent z-10"></div>
+            <div class="flex w-[200%] md:w-[200%] animate-marquee opacity-50">
+                <div class="flex items-center justify-around w-1/2 min-w-full text-xs md:text-base font-bold tracking-widest uppercase text-white/90 gap-6 md:gap-10 px-4 md:px-10">
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> בית הדין הרבני הגדול</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> מומחה לחושן משפט</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> פסקי דין תקדימיים</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> בתי הדין האזוריים</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> ידין ידין</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> בוררות הלכתית</span>
+                </div>
+                <div class="flex items-center justify-around w-1/2 min-w-full text-xs md:text-base font-bold tracking-widest uppercase text-white/90 gap-6 md:gap-10 px-4 md:px-10">
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> בית הדין הרבני הגדול</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> מומחה לחושן משפט</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> פסקי דין תקדימיים</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> בתי הדין האזוריים</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> ידין ידין</span>
+                    <span class="whitespace-nowrap"><i class="fas fa-check-circle text-gold mr-1.5 md:mr-2"></i> בוררות הלכתית</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services -->
+        <section id="services" class="py-20 md:py-28 bg-[#0a0a0a] relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="text-gold font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-3 block">תחומי עיסוק משפטיים</span>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 heebo-font">התמחויות ב<span class="gold-gradient-text">בתי הדין הרבניים</span></h2>
+                    <p class="max-w-2xl mx-auto text-white/80 text-base md:text-lg">ייצוג מקצועי הדורש בקיאות בדיני ישראל, יחד עם חשיבה משפטית טקטית לניהול הליכים מסובכים.</p>
                 </div>
                 
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <article class="light-card p-6 rounded-2xl" data-aos="fade-up">
-                        <i class="fas fa-ring text-2xl text-gold mb-4" aria-hidden="true"></i>
-                        <h3 class="text-lg font-bold text-brand-navy mb-2 heebo-font">גירושין ודיני אישות</h3>
-                        <p class="text-brand-textMuted text-xs sm:text-sm leading-relaxed">ניהול תיק גירושין כולל תביעת גירושין, שלום בית, מזונות, משמורת וחלוקת רכוש. אסטרטגיה המשלבת את טובת הלקוח עם סיום מהיר ויעיל.</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <article class="glass p-6 md:p-8 rounded-[2rem] glass-hover group relative overflow-hidden glow-effect-card border-beam" data-aos="fade-up">
+                        <div class="absolute top-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-gold/5 rounded-br-full transition-all duration-500 group-hover:scale-150 group-hover:bg-gold/15 pointer-events-none"></div>
+                        <i class="fas fa-ring text-3xl md:text-4xl text-gold mb-5 md:mb-6 relative z-10 transform group-hover:-translate-y-2 transition-transform drop-shadow-md" aria-hidden="true"></i>
+                        <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 heebo-font relative z-10">גירושין ודיני אישות</h3>
+                        <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4 relative z-10">ניהול תיק גירושין כולל תביעת גירושין, שלום בית, מזונות, משמורת וחלוקת רכוש. אסטרטגיה המשלבת את טובת הלקוח עם סיום מהיר ויעיל.</p>
+                        <div class="w-10 h-1 bg-gold/30 rounded-full group-hover:w-20 group-hover:bg-gold transition-all duration-300 relative z-10" aria-hidden="true"></div>
                     </article>
 
-                    <article class="light-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-scroll text-2xl text-gold mb-4" aria-hidden="true"></i>
-                        <h3 class="text-lg font-bold text-brand-navy mb-2 heebo-font">תביעות כתובה</h3>
-                        <p class="text-brand-textMuted text-xs sm:text-sm leading-relaxed">ייצוג בתביעות כתובה מורכבות. ניתוח עילות הגירושין וטענות הלכתיות הדורשות ידע מעמיק ובקיאות בפסיקת בתי הדין.</p>
+                    <article class="glass p-6 md:p-8 rounded-[2rem] glass-hover group relative overflow-hidden border-gold/40 shadow-[0_10px_30px_rgba(212,175,55,0.08)] glow-effect-card border-beam" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-gold/5 rounded-br-full transition-all duration-500 group-hover:scale-150 group-hover:bg-gold/15 pointer-events-none"></div>
+                        <i class="fas fa-scroll text-3xl md:text-4xl text-gold mb-5 md:mb-6 relative z-10 transform group-hover:-translate-y-2 transition-transform drop-shadow-md" aria-hidden="true"></i>
+                        <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 heebo-font relative z-10">תביעות כתובה</h3>
+                        <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4 relative z-10">ייצוג הבעל או האישה בתביעות כתובה. ניתוח עילות הגירושין, מורדת, מעשה כיעור וטענות הלכתיות הדורשות ידע מעמיק.</p>
+                        <div class="w-10 h-1 bg-gold/30 rounded-full group-hover:w-20 group-hover:bg-gold transition-all duration-300 relative z-10" aria-hidden="true"></div>
                     </article>
 
-                    <article id="arbitration" class="light-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-handshake text-2xl text-gold mb-4" aria-hidden="true"></i>
-                        <h3 class="text-lg font-bold text-brand-navy mb-2 heebo-font">דיני ממונות ובוררות</h3>
-                        <p class="text-brand-textMuted text-xs sm:text-sm leading-relaxed">פתרון סכסוכים עסקיים, שותפויות וסוגיות בחושן משפט. ניהול הליכי גישור ובוררות דיסקרטיים בעלי תוקף משפטי מחייב.</p>
+                    <article class="glass p-6 md:p-8 rounded-[2rem] glass-hover group relative overflow-hidden glow-effect-card border-beam" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute top-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-gold/5 rounded-br-full transition-all duration-500 group-hover:scale-150 group-hover:bg-gold/15 pointer-events-none"></div>
+                        <i class="fas fa-handshake text-3xl md:text-4xl text-gold mb-5 md:mb-6 relative z-10 transform group-hover:-translate-y-2 transition-transform drop-shadow-md" aria-hidden="true"></i>
+                        <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 heebo-font relative z-10">דיני ממונות ובוררות</h3>
+                        <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4 relative z-10">פתרון סכסוכים עסקיים, שותפויות וחושן משפט. ניהול הליכי גישור ובוררות זריזים עם תוקף של פסק דין מבית משפט.</p>
+                        <div class="w-10 h-1 bg-gold/30 rounded-full group-hover:w-20 group-hover:bg-gold transition-all duration-300 relative z-10" aria-hidden="true"></div>
                     </article>
 
-                    <article class="light-card p-6 rounded-2xl" data-aos="fade-up">
-                        <i class="fas fa-file-signature text-2xl text-gold mb-4" aria-hidden="true"></i>
-                        <h3 class="text-lg font-bold text-brand-navy mb-2 heebo-font">צוואות וירושות</h3>
-                        <p class="text-brand-textMuted text-xs sm:text-sm leading-relaxed">עריכת צוואות תקפות כהלכה ולפי חוק למניעת סכסוכים, הוצאת צווי ירושה בבית הדין, וטיפול בהתנגדויות לצוואות.</p>
+                    <article class="glass p-6 md:p-8 rounded-[2rem] glass-hover group relative overflow-hidden glow-effect-card border-beam" data-aos="fade-up">
+                        <div class="absolute top-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-gold/5 rounded-br-full transition-all duration-500 group-hover:scale-150 group-hover:bg-gold/15 pointer-events-none"></div>
+                        <i class="fas fa-file-signature text-3xl md:text-4xl text-gold mb-5 md:mb-6 relative z-10 transform group-hover:-translate-y-2 transition-transform drop-shadow-md" aria-hidden="true"></i>
+                        <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 heebo-font relative z-10">צוואות וירושות</h3>
+                        <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4 relative z-10">עריכת צוואות כהלכה למניעת סכסוכים, הוצאת צווי ירושה בבית הדין, וטיפול בהתנגדויות לצוואות בסכסוכים משפחתיים.</p>
+                        <div class="w-10 h-1 bg-gold/30 rounded-full group-hover:w-20 group-hover:bg-gold transition-all duration-300 relative z-10" aria-hidden="true"></div>
                     </article>
 
-                    <article class="light-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-balance-scale-right text-2xl text-gold mb-4" aria-hidden="true"></i>
-                        <h3 class="text-lg font-bold text-brand-navy mb-2 heebo-font">בית הדין הגדול</h3>
-                        <p class="text-brand-textMuted text-xs sm:text-sm leading-relaxed">הגשת ערעורים לבית הדין הרבני הגדול בירושלים. דורש רמת ידע פסיקתית גבוהה מאוד ויכולת לערער על החלטות ערכאה ראשונה.</p>
+                    <article class="glass p-6 md:p-8 rounded-[2rem] glass-hover group relative overflow-hidden glow-effect-card border-beam" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-gold/5 rounded-br-full transition-all duration-500 group-hover:scale-150 group-hover:bg-gold/15 pointer-events-none"></div>
+                        <i class="fas fa-balance-scale-right text-3xl md:text-4xl text-gold mb-5 md:mb-6 relative z-10 transform group-hover:-translate-y-2 transition-transform drop-shadow-md" aria-hidden="true"></i>
+                        <h3 class="text-xl md:text-2xl font-black mb-3 md:mb-4 heebo-font relative z-10">בית הדין הגדול</h3>
+                        <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4 relative z-10">הגשת ערעורים לבית הדין הגדול. דורש רמת ידע פסיקתית גבוהה מאוד ויכולת לערער על החלטות הרכבים אזוריים מורכבים.</p>
+                        <div class="w-10 h-1 bg-gold/30 rounded-full group-hover:w-20 group-hover:bg-gold transition-all duration-300 relative z-10" aria-hidden="true"></div>
                     </article>
 
-                    <div class="gold-gradient p-6 rounded-2xl text-white flex flex-col justify-between shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                        <div>
-                            <h3 class="text-xl font-black mb-2 heebo-font">זקוק לייעוץ מותאם?</h3>
-                            <p class="text-white/90 text-xs sm:text-sm leading-relaxed mb-4">תכנון מוקדם הוא המפתח להצלחה בהליך. צור קשר לבחינת המקרה שלך.</p>
-                        </div>
-                        <a href="#contact" class="bg-white text-brand-navy font-bold py-2.5 px-5 rounded-xl text-center text-xs sm:text-sm hover:bg-slate-100 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-navy">
-                            פנייה לבדיקת התיק
-                        </a>
-                    </div>
+                    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});" class="shimmer-btn w-full text-right gold-gradient p-6 md:p-8 rounded-[2rem] group relative overflow-hidden text-dark flex flex-col justify-center items-center text-center shadow-[0_15px_30px_rgba(212,175,55,0.3)] hover:scale-[1.02] transition-transform duration-300 glow-effect-card cursor-pointer focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none" aria-hidden="true"></div>
+                        <h3 class="text-2xl md:text-3xl font-black mb-2 md:mb-3 heebo-font relative z-10">המקרה מורכב?</h3>
+                        <p class="font-bold mb-6 md:mb-8 text-sm md:text-base text-dark/90 relative z-10">אל תחכו שהצד השני יעשה את הצעד הראשון. בואו נבדוק איך מנצחים.</p>
+                        <span class="bg-dark text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-black hover:bg-dark-light transition-colors shadow-lg w-full flex items-center justify-center gap-2 md:gap-3 relative z-10 text-sm md:text-base">
+                            בדיקת היתכנות לתיק <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Articles Section -->
-        <section id="articles" class="py-16 bg-slate-50 border-t border-slate-200">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <span class="text-gold font-bold uppercase text-xs tracking-wider mb-1 block">מרכז ידע</span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mb-3 heebo-font">מאמרים <span class="gold-gradient-text">וניתוחי פסיקה</span></h2>
-                    <p class="max-w-xl mx-auto text-brand-textMuted text-xs sm:text-sm">מאמרים וסוגיות הלכתיות-משפטיות מאת הרב אלדר לוי.</p>
+       <!-- Quick Tips -->
+        <section class="py-16 md:py-20 bg-dark-light border-y border-gold/10 overflow-hidden relative">
+            <div class="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-gold/5 to-transparent pointer-events-none"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row gap-10 md:gap-12 items-center">
+                    <div class="lg:w-1/3 text-center lg:text-right" data-aos="fade-left">
+                        <h2 class="text-2xl md:text-3xl font-black mb-4 md:mb-6 heebo-font">דע את <span class="gold-gradient-text">זכויותיך</span></h2>
+                        <p class="text-white/80 leading-relaxed mb-6 md:mb-8 text-sm md:text-base">טעות אחת בבית הדין יכולה לעלות שנים של דיונים. הנה כמה טיפים מעשיים וקריטיים מאת הרב אלדר לוי.</p>
+                        <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/מדריך-הליכי-בית-הדין" class="text-gold font-black border-b border-gold/40 pb-1 hover:border-gold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded inline-block text-sm md:text-base">לכל המדריכים והטיפים <i class="fas fa-arrow-left mr-1 md:mr-2" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="lg:w-2/3 grid sm:grid-cols-2 gap-5 md:gap-6 w-full">
+                        <div class="glass p-5 md:p-6 rounded-xl md:rounded-2xl hover:bg-white/5 transition-colors border-gold/20 shadow-lg glow-effect-card border-beam" data-aos="zoom-in">
+                            <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-4 relative z-10"><i class="fas fa-lightbulb text-xl" aria-hidden="true"></i></div>
+                            <h3 class="font-bold mb-2 relative z-10 text-white text-sm md:text-base">יישוב סיכסוך</h3>
+                            <p class="text-xs md:text-sm text-white/70 leading-relaxed relative z-10">בפגישות המהו''ת עם העו''ס, חשוב להגיע רגועים ולשדר נוחות ורצון להגיע להסכמים מחוץ לביה''ד, ככל שניתן.</p>
+                        </div>
+                        <div class="glass p-5 md:p-6 rounded-xl md:rounded-2xl hover:bg-white/5 transition-colors border-gold/20 shadow-lg glow-effect-card border-beam" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-4 relative z-10"><i class="fas fa-microphone-slash text-xl" aria-hidden="true"></i></div>
+                            <h3 class="font-bold mb-2 relative z-10 text-white text-sm md:text-base">שתיקה היא כוח</h3>
+                            <p class="text-xs md:text-sm text-white/70 leading-relaxed relative z-10">אל תמסרו פרטים לצד השני או ברשתות החברתיות. הכל מתועד ויכול לשמש נגדכם.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reviews Section -->
+       <section class="py-12">
+         <style>
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            /* הוספת מסכות צד (Fade) למראה יוקרתי יותר */
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            /* אנימציה אינסופית - 40 שניות לסיבוב */
+            animation: scroll-rtl 40s linear infinite;
+        }
+
+        /* עצירת האנימציה כשמעבירים את העכבר על הקרוסלה */
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* הגדרת תנועה מימין לשמאל עבור אתר בעברית */
+        @keyframes scroll-rtl {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); } 
+        }
+
+        .review-card {
+            width: 320px; /* רוחב קבוע לכל כרטיסיה כדי לשמור על אחידות */
+            flex-shrink: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .review-card {
+                width: 400px;
+            }
+        }
+    </style>
+        
+            <div class="container mx-auto px-6 relative z-10 mb-12 md:mb-16">
+                <div class="text-center" data-aos="fade-up">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-white/5 border border-gold/30 px-4 md:px-5 py-1.5 md:py-2 rounded-full flex items-center gap-2 md:gap-3 shadow-lg backdrop-blur-md">
+                            <span class="text-white font-bold text-xs md:text-sm">לקוחות מאומתים מגוגל</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-4 h-4 md:w-[18px] md:h-[18px]" aria-hidden="true"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+                        </div>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-4 heebo-font">אמת מארץ תצמח..<br><span class="gold-gradient-text">הקשיבו לתוצאות</span></h2>
+                </div>
+            </div>
+
+    <div class="carousel-container" dir="rtl">
+        <div class="carousel-track gap-6 md:gap-8">
+            
+            <!-- ================= קבוצת כרטיסיות ראשונה ================= -->
+            
+            <!-- כרטיסיה 1 (מקורי) -->
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5" aria-hidden="true">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10" aria-hidden="true"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"הגעתי להכבוד הרב אלדר שבור אחרי שעורך דין קודם עשה טעויות בתיק. הוא מיד קלט את הנקודות החלשות וניצח את התיק בדיון אחד. מקצוען ברמה הכי גבוהה!"</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base" aria-hidden="true">מ.א</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני חודש</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 2 (מקורי) -->
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/50 shadow-[0_0_30px_rgba(212,175,55,0.2)] flex flex-col justify-between bg-gradient-to-b from-white/10 to-transparent relative">
+                <div class="absolute -top-3 md:-top-4 right-6 md:right-8 bg-gold text-dark text-[10px] md:text-xs font-black px-3 md:px-4 py-1 md:py-1.5 rounded-full shadow-lg">המלצה נבחרת</div>
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6 mt-2">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5" aria-hidden="true">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-gold/30" aria-hidden="true"></i>
+                    </div>
+                    <blockquote class="text-white/95 text-sm md:text-base leading-relaxed mb-6 font-medium">"בזכות ההבנה של הרב אלדר בהלכה ובחוק ובעצם היותו מתמחה לכהן כדיין שראה מאות דיונים מעיני הדיינים, קיבלתי את מה שמגיע לי למרות שהצד השני סירב לשלם. הוא פשוט ידע איזה שאלות לשאול בחקירה. ממליצה בחום."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-gold/20">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-900/40 flex items-center justify-center font-black text-white border border-gold/30 text-sm md:text-base" aria-hidden="true">ש.כ</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני 3 חודשים</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 3 (מקורי) -->
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5" aria-hidden="true">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10" aria-hidden="true"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"מעבר לידע ההלכתי והמשפטי המטורף, הרב אלדר ליווה אותי אישית בשעות הכי קשות. הרגשתי שיש לי גב חזק שלא יוותר על הילדים שלי."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-emerald-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base" aria-hidden="true">א.ד</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני חצי שנה</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 4 (חדש) -->
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5" aria-hidden="true">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10" aria-hidden="true"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"השירות שקיבלתי היה יוצא דופן. ניהול התיק נעשה במקצועיות רבה וביסודיות עד לפרטים הקטנים ביותר. התוצאה הסופית הייתה מעולה לשביעות רצוני המלאה."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-red-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base" aria-hidden="true">י.מ</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני חודשיים</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 5 (חדש) -->
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5" aria-hidden="true">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10" aria-hidden="true"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"לאחר חודשים של תסכול, הרב אלדר לקח את המושכות והביא לסיום מהיר של הסכסוך. ממליץ לכל מי שמחפש ייצוג הולם ומקצועי ללא פשרות."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base" aria-hidden="true">ד.ל</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני 5 חודשים</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- כרטיסיה 6 (חדש) -->
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5" aria-hidden="true">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10" aria-hidden="true"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"מענה מהיר, יחס אנושי והבנה עמוקה של החוק. הרב אלדר הוא איש המקצוע שתרצו לצידכם כשהעניינים מסתבכים. תודה על הכל!"</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-indigo-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base" aria-hidden="true">נ.ב</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני שבועיים</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= שכפול קבוצת הכרטיסיות ליצירת רצף אינסופי ================= -->
+            
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300" aria-hidden="true">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"הגעתי לכבוד הרב אלדר שבור אחרי שעורך דין קודם עשה טעויות בתיק. הרב אלדר מיד קלט את הנקודות החלשות וניצח את התיק בדיון אחד. מקצוען ברמה הכי גבוהה!"</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base">מ.א</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני חודש</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/50 shadow-[0_0_30px_rgba(212,175,55,0.2)] flex flex-col justify-between bg-gradient-to-b from-white/10 to-transparent relative" aria-hidden="true">
+                <div class="absolute -top-3 md:-top-4 right-6 md:right-8 bg-gold text-dark text-[10px] md:text-xs font-black px-3 md:px-4 py-1 md:py-1.5 rounded-full shadow-lg">המלצה נבחרת</div>
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6 mt-2">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-gold/30"></i>
+                    </div>
+                    <blockquote class="text-white/95 text-sm md:text-base leading-relaxed mb-6 font-medium">"בזכות ההבנה של הרב אלדר שליט'א בהלכה בחוק ובמשפט, קיבלתי את מה שמגיע לי למרות שהצד השני סירב לשלם. הוא פשוט ידע איזה שאלות לשאול בחקירה. ממליצה בחום."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-gold/20">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-900/40 flex items-center justify-center font-black text-white border border-gold/30 text-sm md:text-base">ש.כ</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני 3 חודשים</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300" aria-hidden="true">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"מעבר לידע ההלכתי והמשפטי המטורף, הרב אלדר ליווה אותי אישית בשעות הכי קשות. הרגשתי שיש לי גב חזק שלא יוותר על הילדים שלי."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-emerald-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base">א.ד</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני חצי שנה</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300" aria-hidden="true">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"השירות שקיבלתי היה יוצא דופן. ניהול התיק נעשה במקצועיות רבה וביסודיות עד לפרטים הקטנים ביותר. התוצאה הסופית הייתה מעולה לשביעות רצוני המלאה."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-red-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base">י.מ</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני חודשיים</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300" aria-hidden="true">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"לאחר חודשים של תסכול, הרב אלדר לקח את המושכות והביא לסיום מהיר של הסכסוך. ממליץ לכל מי שמחפש ייצוג הולם ומקצועי ללא פשרות."</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base">ד.ל</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני 5 חודשים</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-gold/20 flex flex-col justify-between transition-transform duration-300" aria-hidden="true">
+                <div>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex text-gold text-xs md:text-sm gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left text-xl md:text-2xl text-white/10"></i>
+                    </div>
+                    <blockquote class="text-white/80 text-sm md:text-base leading-relaxed mb-6">"מענה מהיר, יחס אנושי והבנה עמוקה של החוק. הרב אלדר הוא איש המקצוע שתרצו לצידכם כשהעניינים מסתבכים. תודה על הכל!"</blockquote>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-indigo-900/40 flex items-center justify-center font-black text-white border border-white/10 text-sm md:text-base">נ.ב</div>
+                    <div>
+                        <div class="text-xs md:text-sm font-bold text-white">לקוח/ה מאומת/ת</div>
+                        <div class="text-[10px] md:text-xs text-white/50">לפני שבועיים</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+                <!-- Articles Section -->
+        <section id="articles" class="py-16 md:py-24 bg-[#0a0a0a] relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">מרכז ידע <span class="text-[#d4af37]">ומאמרים</span></h2>
+                    <div class="w-16 md:w-24 h-1 bg-[#d4af37] mx-auto mb-4 md:mb-6" aria-hidden="true"></div>
+                    <p class="text-white/80 max-w-2xl mx-auto text-sm md:text-base">מאגר פסקי דין ומאמרים הלכתיים ברמה הגבוהה ביותר בארץ מאת הרב אלדר לוי, דיין וטוען רבני מוסמך. כתיבה תורנית מעמיקה, ניתוח סוגיות מורכבות ומדריכים מעשיים להתנהלות נכונה בבית הדין הרבני.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <article class="light-card rounded-2xl overflow-hidden flex flex-col" data-aos="fade-up">
-                        <div class="h-40 overflow-hidden relative">
-                            <img src="https://plus.unsplash.com/premium_photo-1661769577787-9811af17f98d?w=300&auto=format&fit=crop&q=60" alt="בירור יוחסין" class="w-full h-full object-cover">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    
+                    <article class="group glass rounded-xl overflow-hidden hover:border-[#d4af37]/60 transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.5)] bg-[#111]/80" data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-48 md:h-52 overflow-hidden relative border-b border-gold/20">
+                            <div class="absolute inset-0 bg-[#d4af37]/10 group-hover:bg-transparent transition-colors z-10" aria-hidden="true"></div>
+                            <img src="https://plus.unsplash.com/premium_photo-1661769577787-9811af17f98d?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGxlZ2FsJTIwZG9jdW1lbnRzfGVufDB8fDB8fHww" alt="מאמר בנושא הצהרת אבהות וקביעת מעמד יוחסין " class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
+                            <span class="absolute top-3 right-3 md:top-4 md:right-4 gold-gradient text-dark text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg">בירור יוחסין</span>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <h3 class="text-base font-bold text-brand-navy mb-2 heebo-font">נאמנות האם להכשיר את בניה לבוא בקהל</h3>
-                            <p class="text-brand-textMuted text-xs mb-3 line-clamp-3 flex-grow">עיון יסודי בסוגיית נאמנות האם במקום שבו מתעורר ספק, ובירור יסודות הדין ע"פ פוסקי ההלכה...</p>
-                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/יוחסיןא" target="_blank" rel="noopener noreferrer" class="text-gold font-bold text-xs hover:underline inline-flex items-center gap-1 focus:outline-none focus:ring-1 focus:ring-gold rounded">
-                                קרא את המאמר המלא <i class="fas fa-arrow-left text-[10px]" aria-hidden="true"></i>
+                        <div class="p-5 md:p-6 flex flex-col h-[calc(100%-12rem)] md:h-[calc(100%-13rem)]">
+                            <h3 class="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:text-[#d4af37] transition-colors leading-snug">נאמנות האם להכשיר את בניה לבוא בקהל</h3>
+                            <p class="text-white/70 text-xs md:text-sm mb-4 md:mb-6 line-clamp-3 flex-grow">בכל מקום שבו מתעורר ספק או פקפוק בנוגע לכשרותו של וולד לבוא בקהל ישראל, כל שהאם ניצבת לפנינו ומזהה את האב, ועל ידי אמירתה זו נמצא הוולד כשר – הרי שניתנה לה נאמנות גמורה מן התורה, ומתירין את הוולד על פי דבריה.</p>
+                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/יוחסיןא" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[#d4af37] font-bold text-xs md:text-sm hover:gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded w-fit mt-auto">
+                                קרא את המאמר המלא 
+                                <svg class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </a>
                         </div>
                     </article>
 
-                    <article class="light-card rounded-2xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                        <div class="h-40 overflow-hidden relative">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/V03p128a01_Ketubah.jpg" alt="תביעת כתובה" class="w-full h-full object-cover">
+                    <article class="group bg-[#111] border border-white/10 rounded-xl overflow-hidden hover:border-[#d4af37]/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-48 md:h-52 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-[#d4af37]/10 group-hover:bg-transparent transition-colors z-10" aria-hidden="true"></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/V03p128a01_Ketubah.jpg" alt="מאמר משפטי בנושא תביעת כתובה ועילות גירושין" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
+                            <span class="absolute top-3 right-3 md:top-4 md:right-4 bg-[#d4af37] text-black text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-20">תביעת כתובה</span>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <h3 class="text-base font-bold text-brand-navy mb-2 heebo-font">תביעת הכתובה: מתי זכאים ומתי לא?</h3>
-                            <p class="text-brand-textMuted text-xs mb-3 line-clamp-3 flex-grow">ניתוח העילות ההלכתיות המשפיעות על חובת הכתובה, ומדריך להתנהלות נכונה בבית הדין...</p>
-                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/כתובהא" target="_blank" rel="noopener noreferrer" class="text-gold font-bold text-xs hover:underline inline-flex items-center gap-1 focus:outline-none focus:ring-1 focus:ring-gold rounded">
-                                קרא את המאמר המלא <i class="fas fa-arrow-left text-[10px]" aria-hidden="true"></i>
+                        <div class="p-5 md:p-6 flex flex-col h-[calc(100%-12rem)] md:h-[calc(100%-13rem)]">
+                            <h3 class="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:text-[#d4af37] transition-colors leading-snug">תביעת הכתובה: מתי האישה זכאית ומתי לא?</h3>
+                            <p class="text-white/60 text-xs md:text-sm mb-4 md:mb-6 line-clamp-3 flex-grow">עילות כמו "מעשה כיעור" או "מורדת" יכולות לשנות את התמונה ההלכתית מקצה לקצה. מדריך מעשי לניהול תביעת כתובה בבית הדין...</p>
+                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/כתובהא" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[#d4af37] font-bold text-xs md:text-sm hover:gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded w-fit mt-auto">
+                                קרא את המאמר המלא 
+                                <svg class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </a>
                         </div>
                     </article>
 
-                    <article class="light-card rounded-2xl overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                        <div class="h-40 overflow-hidden relative">
-                            <img src="https://www.mleibowitz.co.il/wp-content/uploads/2019/12/Depositphotos_26276163_l-2015.b197b0.webp" alt="חלוקת זכויות" class="w-full h-full object-cover">
+                    <article class="group bg-[#111] border border-white/10 rounded-xl overflow-hidden hover:border-[#d4af37]/50 transition-all duration-500 shadow-xl sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="300">
+                        <div class="h-48 md:h-52 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-[#d4af37]/10 group-hover:bg-transparent transition-colors z-10" aria-hidden="true"></div>
+                            <img src="https://www.mleibowitz.co.il/wp-content/uploads/2019/12/Depositphotos_26276163_l-2015.b197b0.webp" alt="מאמר בנושא איזון נכסים וכושר השתכרות בדין העברי" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
+                            <span class="absolute top-3 right-3 md:top-4 md:right-4 bg-[#d4af37] text-black text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-20">איזון נכסים</span>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <h3 class="text-base font-bold text-brand-navy mb-2 heebo-font">חלוקת זכויות על ידי איזון: כיצד?</h3>
-                            <p class="text-brand-textMuted text-xs mb-3 line-clamp-3 flex-grow">בחינת היחס בין חוק יחסי ממון לדין העברי, ומעמדם של נכסים מופשטים וכושר השתכרות...</p>
-                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/מאמראיזון" target="_blank" rel="noopener noreferrer" class="text-gold font-bold text-xs hover:underline inline-flex items-center gap-1 focus:outline-none focus:ring-1 focus:ring-gold rounded">
-                                קרא את המאמר המלא <i class="fas fa-arrow-left text-[10px]" aria-hidden="true"></i>
+                        <div class="p-5 md:p-6 flex flex-col h-[calc(100%-12rem)] md:h-[calc(100%-13rem)]">
+                            <h3 class="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:text-[#d4af37] transition-colors leading-snug">חלוקת זכויות על ידי איזון: כיצד?</h3>
+                            <p class="text-white/60 text-xs md:text-sm mb-4 md:mb-6 line-clamp-3 flex-grow">האם חוק יחסי ממון כולל בתוכו גם 'כושר השתכרות'? במאמר זה אנו נכנסים לעובי הקורה. שכן, בספר 'מנחת אשר' כותב הגר'א וייס, כי אף שמעיקר הדין אין הנכסים המופשטים שייכים לשני בני הזוג, הרי שמנהג המדינה תקף מדין תנאי שבממון. .</p>
+                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/מאמראיזון" class="inline-flex items-center text-[#d4af37] font-bold text-xs md:text-sm hover:gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded w-fit mt-auto">
+                                קרא את המאמר המלא 
+                                <svg class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </a>
                         </div>
                     </article>
+                    
+                    <article class="group bg-[#111] border border-white/10 rounded-xl overflow-hidden hover:border-[#d4af37]/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-48 md:h-52 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-[#d4af37]/10 group-hover:bg-transparent transition-colors z-10" aria-hidden="true"></div>
+                            <img src="https://d3m9l0v76dty0.cloudfront.net/system/photos/13378495/original/f841551a59461566707d664b140229a0.jpg" alt="מאמר בדין איזון אינטרסים בעיקול נכסים" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
+                            <span class="absolute top-3 right-3 md:top-4 md:right-4 bg-[#d4af37] text-black text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-20">פירוק שותפות</span>
+                        </div>
+                        <div class="p-5 md:p-6 flex flex-col h-[calc(100%-12rem)] md:h-[calc(100%-13rem)]">
+                            <h3 class="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:text-[#d4af37] transition-colors leading-snug">האם רשאים בית הדין להזדקק לתעדוף אופן העיקול בין מניעת הפסד למניעת טרחה</h3>
+                            <p class="text-white/60 text-xs md:text-sm mb-4 md:mb-6 line-clamp-3 flex-grow">האם מוטל על בית הדין להזדקק לבקשת צד אחד לתיעדוף אופן עיקול נכסי הצד השני מכוח טענה שאינו ירצה לטרוח כאשר יבוא לגבות את חובו</p>
+                            <a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/עיקולנכסים" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[#d4af37] font-bold text-xs md:text-sm hover:gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded w-fit mt-auto">
+                                קרא את המאמר המלא 
+                                <svg class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="ספרותתורנית.html" class="inline-block border border-[#d4af37] text-[#d4af37] px-6 md:px-8 py-2.5 md:py-3 rounded-full hover:bg-[#d4af37] hover:text-black transition-all font-bold text-sm md:text-base shadow-[0_0_15px_rgba(212,175,55,0.2)] hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                        לכל המאמרים והמדריכים
+                    </a>
                 </div>
             </div>
         </section>
        
-        <!-- FAQ Section -->
-        <section id="faq" class="py-16 bg-white border-t border-slate-200">
-            <div class="container mx-auto px-4 sm:px-6 max-w-2xl">
-                <div class="text-center mb-10" data-aos="fade-up">
-                    <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mb-2 heebo-font">שאלות <span class="gold-gradient-text">ותשובות נפוצות</span></h2>
-                    <p class="text-brand-textMuted text-xs sm:text-sm">מידע חשוב לקראת פנייה להליכים בבית הדין הרבני.</p>
+        <!-- FAQ -->
+        <section id="faq" class="py-16 md:py-24 bg-dark">
+            <div class="container mx-auto px-4 md:px-6 max-w-3xl">
+                <div class="text-center mb-10 md:mb-14" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 heebo-font">שאלות <span class="gold-gradient-text">ותשובות נפוצות</span></h2>
+                    <p class="text-white/80 text-sm md:text-lg">מידע חשוב לפני שמתחילים הליך משפטי בבית הדין הרבני.</p>
                 </div>
                 
-                <div class="space-y-3">
-                    <details class="bg-slate-50 rounded-xl border border-slate-200 p-3.5 group">
-                        <summary class="flex items-center justify-between font-bold text-sm sm:text-base text-brand-navy cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold rounded p-1">
-                            <span>מה ההבדל בין עורך דין לטוען רבני?</span>
-                            <i class="fas fa-chevron-down text-gold text-xs group-open:rotate-180 transition-transform" aria-hidden="true"></i>
+                <div class="space-y-3 md:space-y-4">
+                    <details class="glass rounded-xl md:rounded-2xl group border border-gold/20 shadow-lg" data-aos="fade-up">
+                        <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer font-bold text-base md:text-lg select-none outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:rounded-2xl min-h-[60px]">
+                            <span class="pr-2">מה ההבדל בין עורך דין לטוען רבני?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 bg-gold/15 border border-gold/30 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-gold flex-shrink-0 mr-3 md:mr-4" aria-hidden="true">
+                                <i class="fas fa-chevron-down text-xs md:text-sm"></i>
+                            </span>
                         </summary>
-                        <div class="mt-2 text-brand-textMuted text-xs sm:text-sm leading-relaxed border-t border-slate-200 pt-2.5">
-                            בעוד עורך דין מתמחה במשפט האזרחי, טוען רבני מתמחה בדין העברי ובפסיקות בתי הדין הרבניים ("חושן משפט" ו"אבן העזר"). מכיוון שבית הדין פוסק ע"פ הדין האישי וההלכה, לבקיאות זו יתרון משמעותי בניהול התיק.
+                        <div class="px-5 md:px-6 pb-5 md:pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-gold/10 pt-3 md:pt-4">
+                            עורך דין לומד את חוקי המדינה, אך טוען רבני לומד במשך שנים ארוכות את ההלכה, שולחן ערוך ופסקי הדין ("חושן משפט" ו"אבן העזר"). מכיוון שבית הדין הרבני פוסק אך ורק לפי ההלכה, לטוען רבני יש יתרון עצום בהבנת ה"שפה" והחוקים הרלוונטיים.
+                        </div>
+                    </details>
+                    
+                    <details class="glass rounded-xl md:rounded-2xl group border border-gold/20 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer font-bold text-base md:text-lg select-none outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:rounded-2xl min-h-[60px]">
+                            <span class="pr-2">האם טוען רבני יכול לייצג גם נשים?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 bg-gold/15 border border-gold/30 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-gold flex-shrink-0 mr-3 md:mr-4" aria-hidden="true">
+                                <i class="fas fa-chevron-down text-xs md:text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="px-5 md:px-6 pb-5 md:pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-gold/10 pt-3 md:pt-4">
+                            בהחלט. הרב אלדר לוי מייצג נשים וגברים כאחד בנאמנות מוחלטת ללקוח/ה, מתוך יראת שמים ושמירה על כללי הצניעות וההלכה. לא פעם, ההבנה העמוקה בהלכות כתובה ומזונות היא זו שמצילה את האישה או מגינה על הגבר מתביעות מופרזות.
                         </div>
                     </details>
 
-                    <details class="bg-slate-50 rounded-xl border border-slate-200 p-3.5 group">
-                        <summary class="flex items-center justify-between font-bold text-sm sm:text-base text-brand-navy cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold rounded p-1">
-                            <span>האם הפנייה והייעוץ הראשוניים סודיים?</span>
-                            <i class="fas fa-chevron-down text-gold text-xs group-open:rotate-180 transition-transform" aria-hidden="true"></i>
+                    <details class="glass rounded-xl md:rounded-2xl group border border-gold/20 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer font-bold text-base md:text-lg select-none outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:rounded-2xl min-h-[60px]">
+                            <span class="pr-2">האם הפנייה והייעוץ הראשוני מחייבים?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 bg-gold/15 border border-gold/30 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-gold flex-shrink-0 mr-3 md:mr-4" aria-hidden="true">
+                                <i class="fas fa-chevron-down text-xs md:text-sm"></i>
+                            </span>
                         </summary>
-                        <div class="mt-2 text-brand-textMuted text-xs sm:text-sm leading-relaxed border-t border-slate-200 pt-2.5">
-                            בהחלט. כל פנייה ושיחה חוסות תחת חובת סודיות וחיסיון מלאים. הפנייה נועדה לאפשר בחינה יסודית של המצב המשפטי והגדרת אסטרטגיה מתאימה.
+                        <div class="px-5 md:px-6 pb-5 md:pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-gold/10 pt-3 md:pt-4">
+                             הפנייה הראשונית והייעוץ המקדמי ניתנים ללא כל התחייבות. הם נועדו כדי לאפשר לכם להציג את נסיבות המקרה, לקבל הערכה ראשונית של המצב המשפטי ולהכיר את דרכי הפעולה האפשריות. אם אתם זקוקים להכוונה ראשונית או לבחינת המקרה שלכם, אתם מוזמנים לפנות אלינו בלב שקט.
                         </div>
                     </details>
 
-                    <details class="bg-slate-50 rounded-xl border border-slate-200 p-3.5 group">
-                        <summary class="flex items-center justify-between font-bold text-sm sm:text-base text-brand-navy cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold rounded p-1">
-                            <span>מתי מומלץ לפנות לייעוץ מקצועי?</span>
-                            <i class="fas fa-chevron-down text-gold text-xs group-open:rotate-180 transition-transform" aria-hidden="true"></i>
+                    <details class="glass rounded-xl md:rounded-2xl group border border-gold/20 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                        <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer font-bold text-base md:text-lg select-none outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:rounded-2xl min-h-[60px]">
+                            <span class="pr-2">מתי נכון לפנות לייעוץ משפטי?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 bg-gold/15 border border-gold/30 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-gold flex-shrink-0 mr-3 md:mr-4" aria-hidden="true">
+                                <i class="fas fa-chevron-down text-xs md:text-sm"></i>
+                            </span>
                         </summary>
-                        <div class="mt-2 text-brand-textMuted text-xs sm:text-sm leading-relaxed border-t border-slate-200 pt-2.5">
-                            מומלץ לפנות מוקדם ככל הניתן, רצוי אף בטרם נקיטת צעדים גלויים. פנייה מוקדמת מאפשרת לתכנן את צעדי הליך יישוב הסכסוך ומרוץ הסמכויות בצורה שקולה ומחושבת.
+                        <div class="px-5 md:px-6 pb-5 md:pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-gold/10 pt-3 md:pt-4">
+                            מיד כשמתעורר חשש לסכסוך ממשי. בבתי הדין יש חשיבות עליונה ל"מרוץ הסמכויות" (מי שפותח את התיק ראשון ומגדיר את הערכאה). פנייה מוקדמת מאפשרת לתכנן מהלך שקט שייתן יתרון מובהק.
                         </div>
                     </details>
                 </div>
             </div>
         </section>
 
-        <!-- Footer & Contact Form -->
-        <footer id="contact" class="bg-brand-navy text-white pt-14 pb-10">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="bg-white text-brand-textMain p-6 sm:p-10 rounded-2xl shadow-lg border border-slate-200 max-w-3xl mx-auto mb-12">
-                    <div class="grid lg:grid-cols-2 gap-6 items-center">
-                        <div>
-                            <span class="text-gold font-bold text-xs uppercase tracking-wider block mb-1">צור קשר</span>
-                            <h2 class="text-2xl font-black text-brand-navy mb-3 heebo-font">פנייה ראשונית ודיסקרטית</h2>
-                            <p class="text-brand-textMuted text-xs sm:text-sm leading-relaxed mb-4">שיחת ייעוץ ראשונית מאפשרת להבין את מסגרת ההליך והאפשרויות העומדות בפניך. השאר פרטים ונחזור אליך בהקדם.</p>
-                            
-                            <div class="space-y-2 text-xs sm:text-sm">
-                                <a href="tel:0534192798" class="flex items-center gap-2 font-bold text-brand-navy hover:text-gold transition-colors dir-ltr w-fit focus:outline-none focus:ring-1 focus:ring-gold rounded">
-                                    <i class="fas fa-phone-alt text-gold text-xs" aria-hidden="true"></i> 053-4192798
-                                </a>
-                                <a href="mailto:office.rabbinical@gmail.com" class="flex items-center gap-2 text-brand-textMuted hover:text-gold transition-colors w-fit focus:outline-none focus:ring-1 focus:ring-gold rounded">
-                                    <i class="fas fa-envelope text-gold text-xs" aria-hidden="true"></i> office.rabbinical@gmail.com
-                                </a>
-                            </div>
+    <!-- Footer & Contact Form -->
+    <footer id="contact" class="bg-[#050505] pt-16 md:pt-20 pb-8 md:pb-10 border-t border-gold/30 overflow-hidden relative">
+        <div class="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-gold/5 blur-[120px] md:blur-[180px] rounded-full pointer-events-none" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="glass p-6 md:p-10 lg:p-14 rounded-[2rem] md:rounded-[3rem] border-gold/40 mb-16 md:mb-20 max-w-5xl mx-auto shadow-[0_30px_70px_rgba(0,0,0,0.8)] bg-gradient-to-br from-[#111] to-dark">
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+                    <div class="text-center lg:text-right">
+                        <div class="inline-flex items-center justify-center lg:justify-start gap-2 text-gold text-[10px] md:text-xs font-bold mb-4 md:mb-6 bg-gold/10 px-4 py-1.5 rounded-full border border-gold/30 shadow-sm mx-auto lg:mx-0">
+                            <i class="fas fa-lock text-gold" aria-hidden="true"></i> סודיות מלאה מובטחת כהלכה
                         </div>
-
-                        <form action="https://formspree.io/f/xlgpwvye" method="POST" class="space-y-3">
-                            <div>
-                                <label for="name" class="sr-only">שם מלא</label>
-                                <input type="text" id="name" name="name" placeholder="שם מלא (או ראשי תיבות)" required class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm focus:border-gold focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="phone" class="sr-only">מספר טלפון</label>
-                                <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm focus:border-gold focus:outline-none dir-rtl">
-                            </div>
-                            <div>
-                                <label for="email" class="sr-only">דואר אלקטרוני</label>
-                                <input type="email" id="email" name="email" placeholder="דואר אלקטרוני" required class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-sm focus:border-gold focus:outline-none dir-rtl">
-                            </div>
-                            <button type="submit" class="w-full gold-gradient py-2.5 rounded-lg text-white font-bold text-xs sm:text-sm hover:opacity-95 transition-opacity shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-navy">
-                                שליחת פנייה
-                            </button>
-                        </form>
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6 heebo-font text-white leading-tight">פגישת ייעוץ<br class="hidden sm:block">ללא עלות</h2>
+                        <p class="text-white/80 mb-8 md:mb-10 text-sm md:text-lg leading-relaxed">פגישת ייעוץ ראשונית יכולה לשנות את פני התיק כולו. השאירו פרטים ונחזור אליכם לשיחה היקפית וללא התחייבות</p>
+                        
+                        <div class="space-y-4 md:space-y-6 flex flex-col items-center lg:items-start">
+                            <a href="tel:0534192798" class="flex items-center gap-4 md:gap-5 text-lg md:text-xl font-bold text-white hover:text-gold transition-colors w-fit group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg md:pr-2">
+                                <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gold/15 flex items-center justify-center text-gold group-hover-effect border border-gold/30 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                                    <i class="fas fa-phone-alt text-lg md:text-xl" aria-hidden="true"></i>
+                                </div>
+                                <span class="dir-ltr text-xl md:text-2xl tracking-wider">שיחה ישירה</span>
+                            </a>
+                            <a href="mailto:office.rabbinical@gmail.com" class="flex items-center gap-4 md:gap-5 text-base md:text-lg font-light text-white hover:text-gold transition-colors w-fit group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg md:pr-2">
+                                <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/5 flex items-center justify-center text-white/90 group-hover-effect border border-white/10">
+                                    <i class="fas fa-envelope text-lg md:text-xl" aria-hidden="true"></i>
+                                </div>
+                                office.rabbinical@gmail.com
+                            </a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="text-center text-[11px] text-slate-400 border-t border-slate-800 pt-6">
-                    © <span id="current-year">2026</span> הרב אלדר לוי - טוען רבני ודיין מוסמך. כל הזכויות שמורות.
+                    
+                    <form action="https://formspree.io/f/xlgpwvye" method="POST" class="space-y-4 md:space-y-5 bg-[#0a0a0a]/90 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-gold/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1.5 gold-gradient" aria-hidden="true"></div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-white">פנייה ישירה</h3>
+                        
+                        <div>
+                            <label for="name" class="sr-only">שם מלא</label>
+                            <input type="text" id="name" name="name" placeholder="שם מלא (ניתן בראשי תיבות)" required class="input-glow w-full bg-dark/50 border border-white/20 rounded-xl px-4 py-3 md:px-5 md:py-4 text-white focus:border-gold outline-none transition-all placeholder:text-white/40 min-h-[44px]">
+                        </div>
+                        <div>
+                            <label for="phone" class="sr-only">מספר טלפון</label>
+                            <input type="tel" id="phone" name="phone" placeholder="מספר טלפון לחזרה" required class="input-glow w-full bg-dark/50 border border-white/20 rounded-xl px-4 py-3 md:px-5 md:py-4 text-white focus:border-gold outline-none transition-all placeholder:text-white/40 min-h-[44px] dir-rtl">
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">אימייל לחזרה</label>
+                            <input type="email" id="email" name="email" placeholder="אימייל לחזרה" required class="input-glow w-full bg-dark/50 border border-white/20 rounded-xl px-4 py-3 md:px-5 md:py-4 text-white focus:border-gold outline-none transition-all placeholder:text-white/40 min-h-[44px] dir-rtl">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">נושא הפנייה</label>
+                        </div>
+                        <button type="submit" class="w-full gold-gradient py-3 md:py-4 rounded-xl text-dark font-black text-base md:text-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] group-hover-effect transition-all flex items-center justify-center gap-2 md:gap-3 mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px]">
+                            לתיאום פגישה <i class="fas fa-paper-plane text-xs md:text-sm" aria-hidden="true"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </footer>
 
-    </main>
+         <!-- Footer Sitemap -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 mb-8 sm:mb-12 border-t border-white/10 pt-8 sm:pt-16">
+                <div>
+                    <h4 class="font-bold text-gold mb-3 sm:mb-6 text-base sm:text-xl heebo-font drop-shadow-sm">ניווט באתר</h4>
+                    <ul class="space-y-1.5 sm:space-y-3 text-xs sm:text-sm text-white/80">
+                        <li><a href="#header" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">ראשי</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/בוררות" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">בית-הדין לממונות</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/my-rabbinic-law-site/" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">בוררות עסקית</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/סייוע-מייצגים" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">סיוע למייצגים</a></li>
+                        <li><a href="#reviews" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">המלצות מלקוחות</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/safrut-tifarteha/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">ספרות סת"ם</a></li>
+                        <li><a href="https://youtu.be/sTTKgpCdMkc" class="hover:text-gold transition min-h-[30px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">פיענוח קורות חיים</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/britifarteha/" class="relative inline-block hover:text-[#FCF6BA] transition-colors duration-300" data-he="ברית תפארתך" data-en="Gallery">ברית תפארתך</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gold mb-3 sm:mb-6 text-base sm:text-xl heebo-font drop-shadow-sm">תחומי עיסוק</h4>
+                    <ul class="space-y-1.5 sm:space-y-3 text-xs sm:text-sm text-white/80">
+                        <li><a href="#services" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">דיני משפחה וגירושין</a></li>
+                        <li><a href="#services" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">תביעות כתובה</a></li>
+                        <li><a href="https://my-rabbinic-website.github.io/ELDAR-LEVI-OFIC2/הסכמים-צוואות" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">הסכמים וצוואות</a></li>
+                        <li><a href="#services" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">ערעורים לבית הדין הגדול</a></li>
+                        <li><a href="https://www.gov.il/he/collectors/legalinfo?OfficeId=727e39c5-a951-4cd5-9479-07de7f6b64d2&blockCollector=true&Type=874b8fb3-548f-4f25-ac19-e7c792642142&limit=10" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">חוקים ותקנות</a></li>
+                        <li><a href="https://www.gov.il/he/Departments/DynamicCollectors/agrot_rbc?skip=0" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">תשלומי אגרות</a></li>
+                        <li><a href="https://wills.betdin.org.il/" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">בקשות לצווי ירושות וצוואות</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gold mb-3 sm:mb-6 text-base sm:text-xl heebo-font drop-shadow-sm">יצירת קשר</h4>
+                    <ul class="space-y-1.5 sm:space-y-3 text-xs sm:text-sm text-white/80">
+                        <li><a href="#contact" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">פנייה לייעוץ</a></li>
+                        <li><a href="tel:0534192798" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center">053-4192798</a></li>
+                        <li><a href="mailto:office.rabbinical@gmail.com" class="hover:text-gold transition min-h-[28px] sm:min-h-[30px] inline-flex items-center break-all">office.rabbinical@gmail.com</a></li>
+                        <li><a href="" class="hover:text-gold transition dir-ltr inline-flex items-center min-h-[30px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">העצמאות 1, באר שבע</a></li>                    </ul>
+                </div>
+                <div class="col-span-2 lg:col-span-1">
+                    <h4 class="font-bold text-gold mb-3 sm:mb-6 text-base sm:text-xl heebo-font drop-shadow-sm relative inline-block">
+                        עדכונים ומאמרים
+                        <span class="absolute -bottom-1 right-0 w-8 h-[1px] bg-[#D4AF37]"></span>
+                    </h4>
+                    <p class="text-gray-400 text-xs sm:text-sm font-light mb-4 leading-relaxed">
+                        הירשמו לקבלת מאמרים ועדכוני פסיקה תקופתיים ישירות לדואר האלקטרוני.
+                    </p>
+                    <form action="https://formspree.io/f/xlgpwvye" method="POST" class="space-y-3 bg-[#0a0a0a] p-4 sm:p-6 rounded-2xl border border-white/10 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 gold-gradient" aria-hidden="true"></div>
+                        <input type="email" name="email" placeholder="כתובת דוא״ל" class="w-full bg-transparent border-b border-gray-700 text-white px-0 py-2 sm:py-3 focus:outline-none focus:border-[#D4AF37] transition-colors text-xs sm:text-sm placeholder-gray-600 font-light" required>
+                        <button type="submit" class="w-full gold-gradient py-2 rounded-xl text-dark font-black text-xs hover:shadow-lg transition-all">
+                            הרשמה לעדכונים
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-    <!-- Floating Phone Button -->
-    <a href="tel:0534192798" class="fixed bottom-5 right-5 z-[90] w-12 h-12 gold-gradient rounded-full text-white flex items-center justify-center text-lg shadow-md hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-brand-navy" aria-label="חייג אלינו">
-        <i class="fas fa-phone-alt" aria-hidden="true"></i>
-    </a>
+            <div class="text-center pt-6 border-t border-white/10 text-[11px] sm:text-xs text-white/50">
+                © <span id="current-year">2026</span> הרב אלדר לוי - טוען רבני ודיין מוסמך. כל הזכויות שמורות.
+            </div>
+        </div>
+    </footer>
 
-    <!-- Scripts -->
+    <!-- Fixed Floating Buttons -->
+    <div class="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 md:right-6 z-[90] flex flex-col gap-3 md:gap-4">
+        <button id="scrollTopBtn" class="opacity-0 translate-y-10 w-10 h-10 md:w-12 md:h-12 glass rounded-full flex items-center justify-center text-white/70 hover:text-gold hover:border-gold/50 transition-all duration-300 pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white bg-dark/80" aria-label="חזור לראש הדף">
+            <i class="fas fa-arrow-up text-sm md:text-base" aria-hidden="true"></i>
+        </button>
+        
+        <a href="tel:0534192798" class="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 gold-gradient rounded-full text-dark text-xl md:text-2xl shadow-[0_4px_25px_rgba(212,175,55,0.6)] group-hover-effect transition-transform relative group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white" aria-label="חייג אלינו">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            <span class="absolute right-full mr-4 bg-dark text-gold text-xs px-3 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg border border-gold/30 hidden md:block font-bold" aria-hidden="true">חיוג לתיאום פגישה</span>
+        </a>
+    </div>
+
+<!-- Scriptsמכאן ולמטה שודרג בגימיני חשבון רעות -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         (function() {
             "use strict";
 
+            // 1. עדכון שנת זכויות יוצרים
             const yearEl = document.getElementById('current-year');
             if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-            const initScrollProgress = () => {
-                const progressBar = document.getElementById('scroll-progress-bar');
-                window.addEventListener('scroll', () => {
-                    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const scrollPercentage = (scrollTop / scrollHeight) * 100;
-                    if (progressBar) progressBar.style.width = `${scrollPercentage}%`;
-                }, { passive: true });
+            // 2. מערכת חלקיקים (Particles) לרקע יוקרתי (לדסקטופ בלבד)
+            const initParticles = () => {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (window.innerWidth <= 768 || prefersReducedMotion) return;
+
+                const container = document.getElementById('particles');
+                if (!container) return;
+
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.animationDuration = `${Math.random() * 12 + 10}s`;
+                    particle.style.animationDelay = `${Math.random() * 10}s`;
+                    fragment.appendChild(particle);
+                }
+                container.appendChild(fragment);
             };
 
+            // 3. אפקט כתיבה אוטומטית (Typewriter)
+            const initTypewriter = () => {
+                const textElement = document.getElementById("typed-text");
+                if (!textElement) return;
+
+                const words = ["גירושין ומשמורת", "תביעות כתובה", "דיני ממונות ובוררות", "צוואות וירושות", "ייצוג אסטרטגי"];
+                let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+                const typeEffect = () => {
+                    const currentWord = words[wordIndex];
+                    
+                    if (isDeleting) {
+                        charIndex--;
+                    } else {
+                        charIndex++;
+                    }
+
+                    textElement.textContent = currentWord.substring(0, charIndex);
+
+                    let typeSpeed = isDeleting ? 40 : 80;
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        typeSpeed = 2000; // השהייה בסיום המילה
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typeSpeed = 400; // השהייה לפני תחילת מילה חדשה
+                    }
+
+                    setTimeout(typeEffect, typeSpeed);
+                };
+                
+                typeEffect();
+            };
+
+            // 4. אנימציית מספרים חכמה (Counters with Easing)
+            const initCounters = () => {
+                const counters = document.querySelectorAll('.counter');
+                if (counters.length === 0) return;
+
+                // פונקציית האטה מרשימה לספירה (Ease-Out)
+                const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+                const duration = 2000; // משך האנימציה באלפיות שניה
+
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const target = parseInt(entry.target.getAttribute('data-target'), 10);
+                            if (isNaN(target)) return;
+
+                            let startTime = null;
+                            const updateCounter = (currentTime) => {
+                                if (!startTime) startTime = currentTime;
+                                const progress = Math.min((currentTime - startTime) / duration, 1);
+                                
+                                const currentCount = Math.ceil(target * easeOutExpo(progress));
+                                entry.target.innerText = currentCount;
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    entry.target.innerText = target;
+                                }
+                            };
+                            
+                            requestAnimationFrame(updateCounter);
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(counter => observer.observe(counter));
+            };
+
+            // 5. אפקט הארה במעבר עכבר (Glow Hover Effect)
+            const initGlowEffect = () => {
+                const cards = document.querySelectorAll('.glow-effect-card');
+                const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                
+                if (!canHover || prefersReducedMotion || cards.length === 0) return;
+
+                cards.forEach(card => {
+                    let ticking = false;
+                    card.addEventListener('mousemove', e => {
+                        if (!ticking) {
+                            requestAnimationFrame(() => {
+                                const rect = card.getBoundingClientRect();
+                                const x = e.clientX - rect.left;
+                                const y = e.clientY - rect.top;
+                                card.style.setProperty('--mouse-x', `${x}px`);
+                                card.style.setProperty('--mouse-y', `${y}px`);
+                                ticking = false;
+                            });
+                            ticking = true;
+                        }
+                    });
+                });
+            };
+
+            // 6. ניהול אירועי גלילה (Scroll) - מד התקדמות ותפריט עליון
+            const initScrollFeatures = () => {
+                const progressBar = document.getElementById('scroll-progress-bar');
+                const header = document.getElementById('header');
+                const scrollTopBtn = document.getElementById('scrollTopBtn');
+                
+                let ticking = false;
+
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                            
+                            // עדכון מד התקדמות
+                            if (progressBar) {
+                                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                                const scrollPercentage = (scrollTop / scrollHeight) * 100;
+                                progressBar.style.width = `${scrollPercentage}%`;
+                            }
+
+                            // עדכון עיצוב התפריט העליון וכפתור חזרה למעלה
+                            if (scrollTop > 50) {
+                                header?.classList.add('bg-dark/95', 'backdrop-blur-2xl', 'shadow-2xl', 'py-2', 'md:py-2', 'border-gold/20');
+                                header?.classList.remove('py-3', 'md:py-4', 'border-transparent');
+                                
+                                scrollTopBtn?.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                scrollTopBtn?.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                            } else {
+                                header?.classList.remove('bg-dark/95', 'backdrop-blur-2xl', 'shadow-2xl', 'py-2', 'md:py-2', 'border-gold/20');
+                                header?.classList.add('py-3', 'md:py-4', 'border-transparent');
+                                
+                                scrollTopBtn?.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                scrollTopBtn?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                            }
+                            
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+
+                // כפתור חזרה למעלה
+                scrollTopBtn?.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            };
+
+            // 7. תפריט מובייל
             const initMobileMenu = () => {
                 const btn = document.getElementById('mobileMenuBtn');
                 const menu = document.getElementById('mobileMenu');
@@ -723,11 +1527,17 @@
                     isOpen = !isOpen;
                     if (isOpen) {
                         menu?.classList.remove('translate-x-full');
-                        if (btn) btn.setAttribute('aria-expanded', 'true');
+                        if(btn) {
+                            btn.innerHTML = '<i class="fas fa-times text-xl" aria-hidden="true"></i>';
+                            btn.setAttribute('aria-expanded', 'true');
+                        }
                         document.body.style.overflow = 'hidden';
                     } else {
                         menu?.classList.add('translate-x-full');
-                        if (btn) btn.setAttribute('aria-expanded', 'false');
+                        if(btn) {
+                            btn.innerHTML = '<i class="fas fa-bars text-lg" aria-hidden="true"></i>';
+                            btn.setAttribute('aria-expanded', 'false');
+                        }
                         document.body.style.overflow = '';
                     }
                 };
@@ -736,47 +1546,34 @@
                 links.forEach(link => link.addEventListener('click', toggleMenu));
             };
 
-            const initCounters = () => {
-                const counters = document.querySelectorAll('.counter');
-                if (counters.length === 0) return;
-
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const target = parseInt(entry.target.getAttribute('data-target'), 10);
-                            let count = 0;
-                            const speed = target / 40;
-                            const updateCount = () => {
-                                count += speed;
-                                if (count < target) {
-                                    entry.target.innerText = Math.ceil(count);
-                                    setTimeout(updateCount, 25);
-                                } else {
-                                    entry.target.innerText = target;
-                                }
-                            };
-                            updateCount();
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                counters.forEach(counter => observer.observe(counter));
-            };
-
+            // 8. הפעלה בעת טעינת החלון
             window.addEventListener('load', () => {
                 document.body.classList.add('loaded');
                 
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({ duration: 700, once: true });
+                // אתחול AOS Animations
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (!prefersReducedMotion) {
+                    const isMobile = window.innerWidth < 768;
+                    AOS.init({ 
+                        duration: isMobile ? 800 : 1000, 
+                        once: true, 
+                        offset: isMobile ? 20 : 50, 
+                        easing: 'ease-out-cubic' 
+                    });
                 }
 
-                initScrollProgress();
-                initMobileMenu();
+                // הפעלת שאר הפונקציות
+                initParticles();
+                initTypewriter();
                 initCounters();
+                initGlowEffect();
+                initScrollFeatures();
+                initMobileMenu();
             });
 
         })();
     </script>
 </body>
 </html>
+
+ 
